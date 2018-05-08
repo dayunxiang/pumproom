@@ -15,48 +15,148 @@
     <script type="text/ecmascript" src="~/jqgrid/js/jquery.min.js"></script>
     <script type="text/ecmascript" src="~/jqgrid/js/trirand/i18n/grid.locale-en.js"></script>
     <script type="text/ecmascript" src="~/jqgrid/js/trirand/jquery.jqGrid.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
 
+    <script type="text/javascript">
+        $.jgrid.defaults.width = 780;
+        $(document).ready(function () {
+
+            //$(window).resize(function () {
+            //    $("#jqGrid").setGridWidth($(window).width());
+            //});
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $("#jqGrid").setGridWidth(width);
+            });
+
+            $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData")',
+                mtype: "POST",
+                styleUI: 'Bootstrap',
+                datatype: "json",
+                colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],//jqGrid的列显示名字
+                colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                    { name: 'id', index: 'id', width: 55 },
+                    { name: 'invdate', index: 'invdate', width: 90 },
+                    { name: 'name', index: 'name asc, invdate', width: 100 },
+                    { name: 'amount', index: 'amount', width: 80, align: "right" },
+                    { name: 'tax', index: 'tax', width: 80, align: "right" },
+                    { name: 'total', index: 'total', width: 80, align: "right" },
+                    { name: 'note', index: 'note', width: 150, sortable: false }
+                ],
+                //colModel: [
+                //    { label: 'Inv No', name: 'Inv No', key: true, width: 75 },
+                //    { label: 'Customer ID', name: 'CustomerID', width: 150 },
+                //    { label: 'Order Date', name: 'OrderDate', width: 150 },
+                //    { label: 'Freight', name: 'Freight', width: 150 },
+                //    { label: 'Ship Name', name: 'ShipName', width: 150 }
+                //    { label: 'Freight', name: 'Freight', width: 150 },
+                //    { label: 'Ship Name', name: 'ShipName', width: 150 }
+                //],
+                viewrecords: true,
+                height: 250,
+                rowNum: 10,
+                pager: "#jqGridPager",
+
+                 
+                rowList: [10, 20, 30],//可供用户选择一页显示多少条
+                
+                sortname: 'id',//初始化的时候排序的字段
+                sortorder: "desc",//排序方式,可选desc,asc
+                mtype: "post",//向后台请求数据的ajax的类型。可选post,get
+                viewrecords: true,
+                caption: "JSON Example",//表格的标题名字,
+
+                autowidth: true
+            });
+
+            @*jQuery("#jqGrid").jqGrid(
+                        {
+                            url: '@Url.Action("GetData")',//组件创建完成之后请求数据的url
+                            datatype: "json",//请求数据返回的类型。可选json,xml,txt
+                            colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],//jqGrid的列显示名字
+                            colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                                { name: 'id', index: 'id', width: 55 },
+                                { name: 'invdate', index: 'invdate', width: 90 },
+                                { name: 'name', index: 'name asc, invdate', width: 100 },
+                                { name: 'amount', index: 'amount', width: 80, align: "right" },
+                                { name: 'tax', index: 'tax', width: 80, align: "right" },
+                                { name: 'total', index: 'total', width: 80, align: "right" },
+                                { name: 'note', index: 'note', width: 150, sortable: false }
+                            ],
+                            rowNum: 10,//一页显示多少条
+                            rowList: [10, 20, 30],//可供用户选择一页显示多少条
+                            pager: '#pager2',//表格页脚的占位符(一般是div)的id
+                            sortname: 'id',//初始化的时候排序的字段
+                            sortorder: "desc",//排序方式,可选desc,asc
+                            mtype: "post",//向后台请求数据的ajax的类型。可选post,get
+                            viewrecords: true,
+                            caption: "JSON Example"//表格的标题名字
+                        });
+                    /*创建jqGrid的操作按钮容器*/
+                    /*可以控制界面上增删改查的按钮是否显示*/*@
+            jQuery("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: false, add: false, del: false });
+            
+        });
+       
+
+    </script>
 
 
 
 }
 
-<script>
-		$.jgrid.defaults.width = 780;
-</script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <meta charset="utf-8" />
 <title>jqGrid Loading Data - Million Rows from a REST service</title>
-</head>
-<body>
-    <div style="margin-left:20px">
-        <table id="jqGrid"></table>
-        <div id="jqGridPager"></div>
+
+
+
+
+
+<div>
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5">JQGrid</h5">
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">选项1</a>
+                            </li>
+                            <li>
+                                <a href="#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="jqGrid_wrapper">
+                       
+                            <table id="jqGrid"></table>
+                            <div id="jqGridPager"></div>
+                        
+                       
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
     </div>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $("#jqGrid").jqGrid({
-                url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?callback=?&qwery=longorders',
-                mtype: "GET",
-				styleUI : 'Bootstrap',
-                datatype: "jsonp",
-                colModel: [
-                    { label: 'OrderID', name: 'OrderID', key: true, width: 75 },
-                    { label: 'Customer ID', name: 'CustomerID', width: 150 },
-                    { label: 'Order Date', name: 'OrderDate', width: 150 },
-                    { label: 'Freight', name: 'Freight', width: 150 },
-                    { label:'Ship Name', name: 'ShipName', width: 150 }
-                ],
-				viewrecords: true,
-                height: 250,
-                rowNum: 20,
-                pager: "#jqGridPager"
-            });
-        });
-
-    </script>
+</div>
 
 
-</body>
+
