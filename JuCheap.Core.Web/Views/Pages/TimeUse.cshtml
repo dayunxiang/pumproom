@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+@section styles
+    {
+   
+   
+    
+   
+   
+    
+    
+    <link href="~/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    
+    
+   
+    <link href="~/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+    
+}
+@section scripts
+    {
+   
+    
+   
+    <script src="~/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    
+   
+    <script src="~/js/plugins/switchery/switchery.js"></script>
+
+    
+    <script src="~/js/plugins/iCheck/icheck.min.js"></script>
+
+    
+    <script src="~/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+    <script src="~/js/plugins/clockpicker/clockpicker.js"></script>
+
+    <script src="~/js/plugins/cropper/cropper.min.js"></script>
+
+    <script src="~/js/page/form-advanced.js"></script>
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">选项1</a>
+                            </li>
+                            <li>
+                                <a href="#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                   
+                    <p>
+                        <div class="form-group col-sm-6" id="data_1">
+                            
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" value="2014-11-11">
+                            </div>
+                        </div>
+                        <div class="input-group clockpicker col-sm-6" data-autoclose="true">
+                            <input type="text" class="form-control" value="09:30">
+                            <span class="input-group-addon">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+
+                    </p>
+                        
+                    
+                    
+
+                </div>
+            </div>
+            
+            <div class="ibox float-e-margins">
+                <div class="ibox-title  back-change">
+                    
+
+                </div>
+
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+

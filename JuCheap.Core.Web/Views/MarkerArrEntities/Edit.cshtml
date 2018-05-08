@@ -1,0 +1,82 @@
+﻿@model JuCheap.Core.Data.Entity.MarkerArrEntity
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>MarkerArrEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="elecname" class="control-label"></label>
+                <input asp-for="elecname" class="form-control" />
+                <span asp-validation-for="elecname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="electricity" class="control-label"></label>
+                <input asp-for="electricity" class="form-control" />
+                <span asp-validation-for="electricity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="watername" class="control-label"></label>
+                <input asp-for="watername" class="form-control" />
+                <span asp-validation-for="watername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="water" class="control-label"></label>
+                <input asp-for="water" class="form-control" />
+                <span asp-validation-for="water" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="airname" class="control-label"></label>
+                <input asp-for="airname" class="form-control" />
+                <span asp-validation-for="airname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="air" class="control-label"></label>
+                <input asp-for="air" class="form-control" />
+                <span asp-validation-for="air" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alarmname" class="control-label"></label>
+                <input asp-for="alarmname" class="form-control" />
+                <span asp-validation-for="alarmname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alarm" class="control-label"></label>
+                <input asp-for="alarm" class="form-control" />
+                <span asp-validation-for="alarm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="point" class="control-label"></label>
+                <input asp-for="point" class="form-control" />
+                <span asp-validation-for="point" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isOnline" class="control-label"></label>
+                <input asp-for="isOnline" class="form-control" />
+                <span asp-validation-for="isOnline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

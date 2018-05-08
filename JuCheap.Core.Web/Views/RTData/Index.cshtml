@@ -1,0 +1,863 @@
+﻿@model IEnumerable<JuCheap.Core.Web.Mysql.Model.BaseAll1>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+    List<string> list = (List<string>)ViewData["Pumplist"];
+
+}
+
+<div class="row wrapper wrapper-content animated fadeInRight" >
+    <div class="col-sm-12" >
+        <div class="ibox float-e-margins" >
+            <div class="ibox-title">
+                <h5>当前站点最新数据</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">选项1</a>
+                        </li>
+                        <li>
+                            <a href="#">选项2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" >
+
+
+                
+
+                <div class="row" style="max-height:600px">
+                    @foreach (var item in Model)
+                   {
+                    <div class="col-sm-3" style="max-height:600px" >
+                        <div class="panel panel-info" style="max-height:600px">
+                            <div class="panel-heading">
+                                @Html.DisplayFor(modelItem => item.Name)                                   
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.时间)
+                            </div>
+                            <div class="panel-body" style="max-height:500px ;overflow:scroll" >
+                                <div >
+                                    <table class="table table-bordered"  >
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Id)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.进口压力)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.进口压力)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.出口压力)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.出口压力)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.设定压力)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.设定压力)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器1运行频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器1运行频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器2运行频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器2运行频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器3运行频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器3运行频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器4运行频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器4运行频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器1运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器1运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器2运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器2运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器3运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器3运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器4运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器4运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器1运行电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器1运行电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器2运行电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器2运行电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器3运行电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器3运行电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器4运行电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器4运行电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器1运行温度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器1运行温度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器2运行温度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器2运行温度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器3运行温度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器3运行温度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器4运行温度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器4运行温度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵1运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵1运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵2运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵2运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵3运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵3运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵4运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵4运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵5运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵5运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵6运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵6运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵1运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵1运行电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵2运行电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵2运行电流)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.系统总电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.系统总电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.系统总电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.系统总电流)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.总电能)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.总电能)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.A相电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.A相电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.B相电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.B相电压)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.C相电压)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.C相电压)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.A相电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.A相电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.B相电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.B相电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.C相电流)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.C相电流)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.压力传感器量程)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.压力传感器量程)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.水箱液位高度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.水箱液位高度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.瞬时流量)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.瞬时流量)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.正向累计流量)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.正向累计流量)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.反向累计流量)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.反向累计流量)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵房温度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵房温度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵房湿度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵房湿度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.浊度)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.浊度)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.余氯)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.余氯)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.PH值)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PH值)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.COD)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.COD)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵1运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵1运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵2运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵2运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵3运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵3运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵4运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵4运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵5运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵5运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵6运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵6运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵1运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵1运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵2运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵2运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.系统运行状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.系统运行状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.PLC故障状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PLC故障状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.压力报警状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.压力报警状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.水箱缺水状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.水箱缺水状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器1状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器1状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器2状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器2状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器3状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器3状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.变频器4状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.变频器4状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.阀门开关状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.阀门开关状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.阀门到位状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.阀门到位状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.停机报警)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.停机报警)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵房进水报警状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵房进水报警状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.停电来电报警状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.停电来电报警状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.门禁报警状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.门禁报警状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.烟感报警状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.烟感报警状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.污水泵启停状态)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.污水泵启停状态)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.故障复位操作)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.故障复位操作)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.上位机控制下位机系统)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.上位机控制下位机系统)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.控制参数修改确认键)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.控制参数修改确认键)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.阀门开关控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.阀门开关控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.远程设定压力)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.远程设定压力)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.加泵频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.加泵频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.减泵频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.减泵频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.加泵时间)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.加泵时间)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.减泵时间)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.减泵时间)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.换泵时间)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.换泵时间)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.睡眠频率)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.睡眠频率)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.睡眠延时)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.睡眠延时)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.唤醒值设定)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.唤醒值设定)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.负压报警值设定)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.负压报警值设定)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.负压停止延时)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.负压停止延时)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.超压警值设定)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.超压警值设定)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.超压停止延时)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.超压停止延时)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵1启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵1启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵2启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵2启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵3启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵3启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵4启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵4启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵5启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵5启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.泵6启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.泵6启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵1启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵1启停控制)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.小泵2启停控制)
+                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.小泵2启停控制)
+                                                </td>
+                                            </tr>
+                                            
+
+
+
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                        }
+
+                    </div>
+
+                
+
+
+
+                </div>
+                </div>
+    </div>
+</div>
+

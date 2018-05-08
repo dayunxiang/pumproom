@@ -1,0 +1,105 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model JuCheap.Core.Models.CameraPathDto
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>编辑信息</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("Edit", "CameraPath", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.PumpRoomName)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.PumpRoomName, new { @class = "form-control", placeholder = "泵房名称" })
+                @Html.ValidationMessageFor(m => m.PumpRoomName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.PumpRoomId)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.PumpRoomId, new { @class = "form-control", placeholder = "泵房Id" })
+                @Html.ValidationMessageFor(m => m.PumpRoomId)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Ip)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.Ip, new { @class = "form-control", placeholder = "泵房Ip" })
+                @Html.ValidationMessageFor(m => m.Ip)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Port)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.Port, new { @class = "form-control", placeholder = "端口号" })
+                @Html.ValidationMessageFor(m => m.Port)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.LoginName)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.LoginName, new { @class = "form-control", placeholder = "登录用户名" })
+                @Html.ValidationMessageFor(m => m.LoginName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Pwd)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.Pwd, new { @class = "form-control", placeholder = "登陆密码" })
+                @Html.ValidationMessageFor(m => m.Pwd)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.info)：</label>
+            <div class="col-sm-8">
+                @Html.TextAreaFor(m => m.info, new { @class = "form-control", placeholder = "信息", rows = "3" })
+                @Html.ValidationMessageFor(m => m.info)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+        <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Description)：</label>
+        <div class="col-sm-8">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "角色描述", rows = "3" })
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+    </div>*@
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button class="btn btn-info" type="submit">保存</button>
+                <button class="btn btn-white" type="button" id="btnBack">返回</button>
+            </div>
+        </div>
+}
+        </div>
+    </div>
+</div>
+@section scripts{
+    <environment names="Development">
+        <script src="~/js/jquery.validate.js"></script>
+        <script src="~/js/jquery.validate.unobtrusive.js"></script>
+        <script src="~/js/base.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/validate.min.js" asp-append-version="true"></script>
+        <script src="~/js/base.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        $("#btnBack").bind("click", function(e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+    </script>
+}
+
+

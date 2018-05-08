@@ -1,0 +1,96 @@
+﻿@model IEnumerable<JuCheap.Core.Data.Entity.MarkerArrEntity>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.elecname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.electricity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.watername)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.water)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.airname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.air)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.alarmname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.alarm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.point)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isOnline)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.elecname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.electricity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.watername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.water)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.airname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.air)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alarmname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alarm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isOnline)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

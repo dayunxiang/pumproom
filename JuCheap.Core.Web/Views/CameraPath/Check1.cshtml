@@ -1,0 +1,49 @@
+﻿@model JuCheap.Core.Models.CameraPathDto
+@{
+
+    ViewData["Title"] = "Check1";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+
+    string s = Model.LoginName + Model.Pwd + Model.Ip + Model.Port;
+    string b = "http://" + Model.Ip + ":" + Model.Port;
+}
+
+
+
+
+
+
+
+<div class="ibox-title">
+    <button type="button" class="btn btn-w-m btn-default">@Html.DisplayFor(model =>model.PumpRoomName)监控</button>
+
+
+    <a asp-action="Index" class="btn btn-w-m btn-primary">回到监控列表</a>
+    <div class="ibox-tools">
+        <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-wrench"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            <li>
+                <a href="#">选项1</a>
+            </li>
+            <li>
+                <a href="#">选项2</a>
+            </li>
+        </ul>
+        <a class="close-link">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+</div>
+<!--自适应窗口的大小进行变换，跨域访问硬盘录像机。比较稳定和简单-->
+<div class="main-container" id="main" style="width:inherit;height:inherit">
+    <iframe src=@b frameBorder="0" width="100%" height="100%" scrolling="no"></iframe>
+</div>
+
+
+
+

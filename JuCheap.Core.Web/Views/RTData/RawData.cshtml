@@ -1,0 +1,84 @@
+﻿@model IEnumerable<JuCheap.Core.Data.Entity.StationEntity>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+    
+
+}
+
+<div class="row wrapper wrapper-content animated fadeInRight">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>泵房列表</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">选项1</a>
+                        </li>
+                        <li>
+                            <a href="#">选项2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+
+
+                <table class="table table-bordered">
+                    <thead>
+
+                        <tr>
+                            <td>
+                                泵房编号
+                            </td>
+                            <td>
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>
+                                    @Html.DisplayFor(modelItem => item.站点名称)
+                                </th>
+                                <td>
+                                    <a asp-action="ShowData" asp-route-s=@item.编号>查看数据</a>
+                                </td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+﻿@model JuCheap.Core.Data.Entity.MarkerArrEntity
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MarkerArrEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.elecname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.elecname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.electricity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.electricity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.watername)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.watername)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.water)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.water)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.airname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.airname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.air)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.air)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.alarmname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.alarmname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.alarm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.alarm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.point)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.point)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isOnline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isOnline)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
