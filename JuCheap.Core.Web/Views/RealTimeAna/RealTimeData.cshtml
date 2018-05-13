@@ -4,5 +4,220 @@
     Layout = "~/Views/Shared/_Layout_Content.cshtml";
 }
 
-<h2>RealTimeData</h2>
+
+
+@section styles
+    {
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/jqgrid/css/trirand/ui.jqgrid-bootstrap.css" />
+    <style>
+        .class1 {
+            /*background: red*/
+            /*background-color: #7CCD7C*/
+            background-color: #DFF0D8
+        }
+    </style>
+
+}
+@section scripts
+    {
+    <script type="text/ecmascript" src="~/jqgrid/js/jquery.min.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/i18n/grid.locale-en.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/jquery.jqGrid.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $.jgrid.defaults.width = 780;
+        $(document).ready(function () {
+
+            //$(window).resize(function () {
+            //    $("#jqGrid").setGridWidth($(window).width());
+            //});
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $("#jqGrid").setGridWidth(width);
+            });
+
+            $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData2")',
+                mtype: "POST",
+                styleUI: 'Bootstrap',
+                datatype: "json",
+                colNames: ['编号', '分区', '站点', '上传时间', '进口压力', '出口压力', '设定压力', '1#变频器运行频率', '2#变频器运行频率', '3#变频器运行频率', '4#变频器运行频率', '1#变频器运行电流', '2#变频器运行电流', '3#变频器运行电流', '4#变频器运行电流', '1#变频器运行电压', '2#变频器运行电压', '3#变频器运行电压', '4#变频器运行电压', '1#变频器运行温度', '2#变频器运行温度', '3#变频器运行温度', '4#变频器运行温度', '1#泵运行电流', '2#泵运行电流', '3#泵运行电流', '4#泵运行电流', '5#泵运行电流', '6#泵运行电流', '1#小泵运行电流', '2#小泵运行电流', '系统总电压', '系统总电流', '总电能', 'A相电压', 'B相电压', 'C相电压', 'A相电流', 'B相电流', 'C相电流', '压力传感器量程', '水箱液位高度', '瞬时流量', '正向累计流量', '反向累计流量', '泵房温度', '泵房湿度', '浊度', '余氯', 'PH值', 'COD', '1#泵运行状态', '2#泵运行状态', '3#泵运行状态', '4#泵运行状态', '5#泵运行状态', '6#泵运行状态', '1#小泵运行状态', '2#小泵运行状态', '1#泵手自动状态', '2#泵手自动状态', '3#泵手自动状态', '4#泵手自动状态', '5#泵手自动状态', '6#泵手自动状态', '1#小泵手自动状态', '2#小泵手自动状态', '系统运行状态', 'PLC故障状态', '压力报警状态', '水箱缺水状态', '1#变频器状态', '2#变频器状态', '3#变频器状态', '4#变频器状态', '阀门开关状态', '阀门到位状态', '停机报警', '泵房进水报警状态', '停电来电报警状态', '门禁报警状态', '烟感报警状态', '污水泵启停状态', '故障复位操作', '上位机控制下位机系统', '控制参数修改确认键', '阀门开关控制', '远程设定压力', '加泵频率', '减泵频率', '加泵时间', '减泵时间', '换泵时间', '睡眠频率', '睡眠延时', '唤醒值设定', '负压报警值设定', '负压停止延时', '超压警值设定', '超压停止延时', '1#泵启停控制', '2#泵启停控制', '3#泵启停控制', '4#泵启停控制', '5#泵启停控制', '6#泵启停控制', '1#小泵启停控制','2#小泵启停控制'],//jqGrid的列显示名字
+                colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                    { name: 'id', index: 'id', width: 55, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '分区', index: '分区', width: 90, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '站点', index: '站点', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '上传时间', index: '上传时间', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '进口压力', index: '进口压力', width: 80},
+                    { name: '出口压力', index: '出口压力', width: 80 },
+                    { name: '设定压力', index: '设定压力', width: 80 },
+                    { name: '1#变频器运行频率', index: '1#变频器运行频率', width: 130 },
+                    { name: '2#变频器运行频率', index: '2#变频器运行频率', width: 130 },
+                    { name: '3#变频器运行频率', index: '3#变频器运行频率', width: 130 },
+                    { name: '4#变频器运行频率', index: '4#变频器运行频率', width: 130 },
+                    { name: '1#变频器运行电流', index: '1#变频器运行电流', width: 130 },
+                    { name: '2#变频器运行电流', index: '2#变频器运行电流', width: 130 },
+                    { name: '3#变频器运行电流', index: '3#变频器运行电流', width: 130 },
+                    { name: '4#变频器运行电流', index: '4#变频器运行电流', width: 130 },
+                    { name: '1#变频器运行电压', index: '1#变频器运行电压', width: 130 },
+                    { name: '2#变频器运行电压', index: '2#变频器运行电压', width: 130 },
+                    { name: '3#变频器运行电压', index: '3#变频器运行电压', width: 130 },
+                    { name: '4#变频器运行电压', index: '4#变频器运行电压', width: 130 },
+                    { name: '1#变频器运行温度', index: '1#变频器运行温度', width: 130 },
+                    { name: '2#变频器运行温度', index: '2#变频器运行温度', width: 130 },
+                    { name: '3#变频器运行温度', index: '3#变频器运行温度', width: 130 },
+                    { name: '4#变频器运行温度', index: '4#变频器运行温度', width: 130 },
+                    { name: '1#泵运行电流', index: '1#泵运行电流', width: 100 },
+                    { name: '2#泵运行电流', index: '2#泵运行电流', width: 100 },
+                    { name: '3#泵运行电流', index: '3#泵运行电流', width: 100 },
+                    { name: '4#泵运行电流', index: '4#泵运行电流', width: 100 },
+                    { name: '5#泵运行电流', index: '5#泵运行电流', width: 100 },
+                    { name: '6#泵运行电流', index: '6#泵运行电流', width: 100 },
+                    { name: '1#小泵运行电流', index: '1#小泵运行电流', width: 120 },
+                    { name: '2#小泵运行电流', index: '2#小泵运行电流', width: 120 },
+                    { name: '系统总电压', index: '系统总电压', width: 100 },
+                    { name: '系统总电流', index: '系统总电流', width: 100 },
+                    { name: '总电能', index: '总电能', width: 80 },
+                    { name: 'A相电压', index: 'A相电压', width: 80 },
+                    { name: 'B相电压', index: 'B相电压', width: 80 },
+                    { name: 'C相电压', index: 'C相电压', width: 80 },
+                    { name: 'A相电流', index: 'A相电流', width: 80 },
+                    { name: 'B相电流', index: 'B相电流', width: 80 },
+                    { name: 'C相电流', index: 'C相电流', width: 80 },
+                    { name: '压力传感器量程', index: '压力传感器量程', width: 130 },
+                    { name: '水箱液位高度', index: '水箱液位高度', width:110 },
+                    { name: '瞬时流量', index: '瞬时流量', width: 80 },
+                    { name: '正向累计流量', index: '正向累计流量', width: 130 },
+                    { name: '反向累计流量', index: '反向累计流量', width: 130 },
+                    { name: '泵房温度', index: '泵房温度', width: 80 },
+                    { name: '泵房湿度', index: '泵房湿度', width: 80 },
+                    { name: '浊度', index: '浊度', width: 80 },
+                    { name: '余氯', index: '余氯', width: 80 },
+                    { name: 'PH值', index: 'PH值', width: 80 },
+                    { name: 'COD', index: 'COD', width: 80 },
+                    { name: '1#泵运行状态', index: '1#泵运行状态', width: 130 },
+                    { name: '2#泵运行状态', index: '2#泵运行状态', width: 130 },
+                    { name: '3#泵运行状态', index: '3#泵运行状态', width: 130 },
+                    { name: '4#泵运行状态', index: '4#泵运行状态', width: 130 },
+                    { name: '5#泵运行状态', index: '5#泵运行状态', width: 130 },
+                    { name: '6#泵运行状态', index: '6#泵运行状态', width: 130 },
+                    { name: '1#小泵运行状态', index: '1#小泵运行状态', width: 140 },
+                    { name: '2#小泵运行状态', index: '2#小泵运行状态', width: 140 },
+                    { name: '1#泵手自动状态', index: '1#泵手自动状态', width: 140 },
+                    { name: '2#泵手自动状态', index: '2#泵手自动状态', width: 140 },
+                    { name: '3#泵手自动状态', index: '3#泵手自动状态', width: 140 },
+                    { name: '4#泵手自动状态', index: '4#泵手自动状态', width: 140 },
+                    { name: '5#泵手自动状态', index: '5#泵手自动状态', width: 140 },
+                    { name: '6#泵手自动状态', index: '6#泵手自动状态', width: 140 },
+                    { name: '1#小泵手自动状态', index: '1#小泵手自动状态', width: 150 },
+                    { name: '2#小泵手自动状态', index: '2#小泵手自动状态', width: 150 },
+                    { name: '系统运行状态', index: '系统运行状态', width: 120 },
+                    { name: 'PLC故障状态', index: 'PLC故障状态', width: 120 },
+                    { name: '压力报警状态', index: '压力报警状态', width: 120 },
+                    { name: '水箱缺水状态', index: '水箱缺水状态', width: 120 },
+                    { name: '1#变频器状态', index: '1#变频器状态', width: 120 },
+                    { name: '2#变频器状态', index: '2#变频器状态', width: 120 },
+                    { name: '3#变频器状态', index: '3#变频器状态', width: 120 },
+                    { name: '4#变频器状态', index: '4#变频器状态', width: 120 },
+                    { name: '阀门开关状态', index: '阀门开关状态', width: 120 },
+                    { name: '阀门到位状态', index: '阀门到位状态', width: 120 },
+                    { name: '停机报警', index: '停机报警', width: 80 },
+                    { name: '泵房进水报警状态', index: '泵房进水报警状态', width: 150 },
+                    { name: '停电来电报警状态', index: '停电来电报警状态', width: 150 },
+                    { name: '门禁报警状态', index: '门禁报警状态', width: 120 },
+                    { name: '烟感报警状态', index: '烟感报警状态', width: 120 },
+                    { name: '污水泵启停状态', index: '污水泵启停状态', width: 120 },
+                    { name: '故障复位操作', index: '故障复位操作', width: 120 },
+                    { name: '上位机控制下位机系统', index: '上位机控制下位机系统', width: 130 },
+                    { name: '控制参数修改确认键', index: '控制参数修改确认键', width: 130 },
+                    { name: '阀门开关控制', index: '阀门开关控制', width: 120 },
+                    { name: '远程设定压力', index: '远程设定压力', width: 120 },
+                    { name: '加泵频率', index: '加泵频率', width: 80 },
+                    { name: '减泵频率', index: '减泵频率', width: 80 },
+                    { name: '加泵时间', index: '加泵时间', width: 80 },
+                    { name: '减泵时间', index: '减泵时间', width: 80 },
+                    { name: '换泵时间', index: '换泵时间', width: 80 },
+                    { name: '睡眠频率', index: '睡眠频率', width: 80 },
+                    { name: '睡眠延时', index: '睡眠延时', width: 80 },
+                    { name: '唤醒值设定', index: '唤醒值设定', width: 100 },
+                    { name: '负压报警值设定', index: '负压报警值设定', width: 120 },
+                    { name: '负压停止延时', index: '负压停止延时', width: 120 },
+                    { name: '超压警值设定', index: '超压警值设定', width: 120 },
+                    { name: '超压停止延时', index: '超压停止延时', width: 120 },
+                    { name: '1#泵启停控制', index: '1#泵启停控制', width: 120 },
+                    { name: '2#泵启停控制', index: '2#泵启停控制', width: 120 },
+                    { name: '3#泵启停控制', index: '3#泵启停控制', width: 120 },
+                    { name: '4#泵启停控制', index: '4#泵启停控制', width: 120 },
+                    { name: '5#泵启停控制', index: '5#泵启停控制', width: 120 },
+                    { name: '6#泵启停控制', index: '6#泵启停控制', width: 120 },
+                    { name: '1#小泵启停控制', index: '1#小泵启停控制', width: 140 },
+                    { name: '2#小泵启停控制', index: '2#小泵启停控制', width: 140 }
+
+
+                ],
+
+                viewrecords: true,
+                height: "100%",
+                rowNum: 10,
+                pager: "#jqGridPager",
+
+                altRows: true,
+                rowList: [10, 20, 30],//可供用户选择一页显示多少条
+                //这是传输到后面的信息。
+                sortname: 'hehda',//初始化的时候排序的字段
+                sortorder: "desc",//排序方式,可选desc,asc
+                mtype: "post",//向后台请求数据的ajax的类型。可选post,get
+                viewrecords: true,
+                caption: "实时数据",//表格的标题名字,
+
+                //autowidth: true
+                width: $("#tabs").width(),
+                shrinkToFit: false,
+                autoScroll: true,         //shrinkToFit: false,autoScroll: true,这两个属性产生水平滚动条
+                autowidth: false          //必须要,否则没有水平滚动条
+            });
+
+            $("#jqGrid").jqGrid('setFrozenColumns');
+            jQuery("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: false, add: false, del: false });
+
+        });
+
+
+    </script>
+
+
+
+}
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<meta charset="utf-8" />
+<title>jqGrid Loading Data - Million Rows from a REST service</title>
+
+
+
+
+
+<div>
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-content">
+                    <div class="jqGrid_wrapper">
+
+                        <table id="jqGrid"></table>
+                        <div id="jqGridPager"></div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 

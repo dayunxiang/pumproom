@@ -4,5 +4,130 @@
     Layout = "~/Views/Shared/_Layout_Content.cshtml";
 }
 
-<h2>Pressure</h2>
+@section styles
+
+    {
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/jqgrid/css/trirand/ui.jqgrid-bootstrap.css" />
+        <style>
+            .class1 {
+                /*background: red*/
+                /*background-color: #7CCD7C*/
+                background-color: #DFF0D8
+            }
+        </style>
+
+
+}
+@section scripts
+    {
+    <script type="text/ecmascript" src="~/jqgrid/js/jquery.min.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/i18n/grid.locale-en.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/jquery.jqGrid.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $.jgrid.defaults.width = 780;
+        $(document).ready(function () {
+
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $("#jqGrid").setGridWidth(width);
+            });
+
+            $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData1")',
+                mtype: "POST",
+                styleUI: 'Bootstrap',
+                datatype: "json",
+                //colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],//jqGrid的列显示名字
+                //colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                //    { name: 'id', index: 'id', width: 55 },
+                //    { name: 'invdate', index: 'invdate', width: 90 },
+                //    { name: 'name', index: 'name asc, invdate', width: 100 },
+                //    { name: 'amount', index: 'amount', width: 80, align: "right" },
+                //    { name: 'tax', index: 'tax', width: 80, align: "right" },
+                //    { name: 'total', index: 'total', width: 80, align: "right" },
+                //    { name: 'note', index: 'note', width: 150, sortable: false }
+                //],
+                colNames: ['编号','分区', '站点', '传感器', '上传时间', '压力', '今日最高', '时间','今日最低','时间','昨日最高','时间','昨日最低','时间','今日平均','昨日平均'],//jqGrid的列显示名字
+                colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                    { name: 'id', index: 'id', width: 40, key: true, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '分区', index: '分区', width: 90, frozen: true, sortable: false, classes: 'class1' },
+                    { name: '站点', index: '站点', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '传感器', index: '传感器', width: 90, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '上传时间', index: '上传时间', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '压力', index: '压力', width: 90 },
+                    { name: '今日最高', index: '今日最高', width: 90 },
+                    { name: '时间', index: '时间1', width: 150 },
+                    { name: '今日最低', index: '今日最低', width: 90 },
+                    { name: '时间', index: '时间2', width: 150 },
+                    { name: '昨日最高', index: '昨日最高', width: 90 },
+                    { name: '时间', index: '时间3', width: 150 },
+                    { name: '昨日最低', index: '昨日最低', width: 90 },
+                    { name: '时间', index: '时间4', width: 150 },
+                    { name: '今日平均', index: '今日平均', width: 90 },
+                    { name: '昨日平均', index: '昨日平均', width: 90 }
+                    //{ name: 'name', index: 'name asc, invdate', width: 100 },
+                    //{ name: 'amount', index: 'amount', width: 80, align: "right" },
+                    //{ name: 'tax', index: 'tax', width: 80, align: "right" },
+                    //{ name: 'total', index: 'total', width: 80, align: "right" },
+                    //{ name: 'note', index: 'note', width: 150, sortable: false }
+                ],
+                viewrecords: true,
+                //height: 250,
+                height: "100%",
+                rowNum: 10,
+                pager: "#jqGridPager",
+
+                altRows: true,
+
+                rowList: [10, 20, 30],//可供用户选择一页显示多少条
+                //这是传输到后面的信息。
+                sortname: 'hehda',//初始化的时候排序的字段
+                sortorder: "desc",//排序方式,可选desc,asc
+                mtype: "post",//向后台请求数据的ajax的类型。可选post,get
+                viewrecords: true,
+                caption: "压力分析",//表格的标题名字,
+
+                width: $("#tabs").width(),
+                shrinkToFit: false,
+                autoScroll: true,         //shrinkToFit: false,autoScroll: true,这两个属性产生水平滚动条   
+                autowidth: false          //必须要,否则没有水平滚动条
+                //autowidth: true
+            });
+            $("#jqGrid").jqGrid('setFrozenColumns');
+            jQuery("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: false, add: false, del: false });
+
+        });
+
+
+    </script>
+
+
+
+}
+
+
+    <div>
+        <div class="row wrapper wrapper-content animated fadeInRight">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    
+                    <div class="ibox-content">
+                        <div class="jqGrid_wrapper">
+
+                            <table id="jqGrid"></table>
+                            <div id="jqGridPager"></div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 

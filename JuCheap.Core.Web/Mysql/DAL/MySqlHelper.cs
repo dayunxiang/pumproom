@@ -9,7 +9,8 @@ namespace JuCheap.Core.Web.Mysql.DAL
 {
     public class MySqlHelper
     {
-        private static readonly string connectionString = "server=localhost;port=3306;user=root;password=libaoping; database=jucheapcore;";
+        //server=yb.upc.edu.cn;user id=root;pwd=123456;persistsecurityinfo=True;database=jucheapcore;port=330;
+        private static readonly string connectionString = "server=localhost;user id=root;pwd=libaoping;persistsecurityinfo=True;database=jucheapcore;port=3306;";
         MySqlConnection conn = new MySqlConnection(connectionString);
         //返回受影响的行数
         public static int ExecuteNonQuery(string sqlStr, params MySqlParameter[] paras)

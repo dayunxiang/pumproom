@@ -52,7 +52,7 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.泵5运行电流 = dr["5泵运行电流"].ToString();
                 p.泵6运行电流 = dr["6泵运行电流"].ToString();
                 p.小泵1运行电流 = dr["1小泵运行电流"].ToString();
-                p.小泵2运行电流= dr["1小泵运行电流"].ToString();
+                p.小泵2运行电流= dr["2小泵运行电流"].ToString();
                 p.系统总电压 = dr["系统总电压"].ToString();
                 p.系统总电流 = dr["系统总电流"].ToString();
                 p.总电能 = dr["总电能"].ToString();
@@ -101,6 +101,7 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.阀门到位状态 = dr["阀门到位状态"].ToString();
                 p.停机报警 = dr["停机报警"].ToString();
                 p.泵房进水报警状态 = dr["泵房进水报警状态"].ToString();
+                p.停电来电报警状态 = dr["停电来电报警状态"].ToString();
                 p.门禁报警状态 = dr["门禁报警状态"].ToString();
                 p.烟感报警状态 = dr["烟感报警状态"].ToString();
                 p.污水泵启停状态 = dr["污水泵启停状态"].ToString();

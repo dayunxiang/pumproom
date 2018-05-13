@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace JuCheap.Core.Web.Mysql.Model
 {
-    public class BaseAll
+    public class RTData
     {
-        public int Id { get; set; }
-        public DateTime 时间 { get; set; }
+        public  int Id{get;set;}
+        public string 分区名称{get;set;}
+        public string 站点名称{get;set;}
+        public string Tablename{get;set;}
+        public string 上传时间{ get;set; }
         public string 进口压力 { get; set; }
         public string 出口压力 { get; set; }
         public string 设定压力 { get; set; }
@@ -104,7 +107,7 @@ namespace JuCheap.Core.Web.Mysql.Model
         public string 负压报警值设定 { get; set; }
         public string 负压停止延时 { get; set; }
         public string 超压警值设定 { get; set; }
-        public string 超压停止延时 { get; set; }      
+        public string 超压停止延时 { get; set; }
         public string 泵1启停控制 { get; set; }
         public string 泵2启停控制 { get; set; }
         public string 泵3启停控制 { get; set; }
@@ -113,20 +116,5 @@ namespace JuCheap.Core.Web.Mysql.Model
         public string 泵6启停控制 { get; set; }
         public string 小泵1启停控制 { get; set; }
         public string 小泵2启停控制 { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-    
-
 }
