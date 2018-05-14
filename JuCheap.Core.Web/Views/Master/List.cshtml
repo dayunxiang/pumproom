@@ -81,7 +81,7 @@
                                 @Html.DisplayFor(modelItem => item.站点类型)
                             </td>
                             <td>
-                                <a asp-action="Index" asp-route-s=@item.站点名称>控制界面</a>
+                                <a asp-action="Index" asp-route-s=@item.站点名称 asp-route-x=@item.编号>控制界面</a>
                             </td>
 
                         </tr>

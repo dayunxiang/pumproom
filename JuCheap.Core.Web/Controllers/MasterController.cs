@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using JuCheap.Core.Data;
+using JuCheap.Core.Web.Mysql.BLL;
+using JuCheap.Core.Web.Mysql.Model;
 using JuCheap.Core.Web.WcfSevice;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,36 +22,45 @@ namespace JuCheap.Core.Web.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(string s)
+        public IActionResult Index(string s,string x)
         {
             ViewData["Name"] = s;
-            return View();
+            string Tablename = "pumproom" + x;
+            MasterData md = new MasterData_BLL().GetMasterData(Tablename);   
+            return View(md);
         }
         public async Task<IActionResult> List()
         {
             return View(await _context.Stations.Where(item => !item.IsDeleted).ToListAsync());
         }
 
+        //[HttpPost]
+        //public async Task<JsonResult> GetData(string s)
+        //{
+        //    //ServiceReference1.Service1Client sa = new ServiceReference1.Service1Client();
+        //    //string wcfdata = await sa.GetDataAsync(s);
+        //    //string wcfdata = sa.GetData(Convert.ToInt32(s));
+        //    //string url = "http://192.168.1.109:8045/Service1.svc";
+        //    //IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+        //    //int result = proxy.Add(1, 3);
+        //    //string wcfdata = ExecuteMethod<IService1>("net.tcp://192.168.0.109:8045/Service1", "GetData", new object[] { 123 }).ToString();
+
+        //    //MyServiceReference.MyServiceClient sa = new MyServiceReference.MyServiceClient();
+        //    //string wcfdata = await sa.GetDataAsync(s);
+        //    string url = "http://192.168.1.109:8045/MyService.svc";
+        //    IMyService proxy = WcfInvokeFactory.CreateServiceByUrl<IMyService>(url);
+        //    string wcfdata = proxy.GetData(s);
+        //    //Console.WriteLine(result);
+        //    return Json(new { IsSuccess = true, wcfdata });
+
+
+        //}
+
         [HttpPost]
-        public async Task<JsonResult> GetData(string s)
+        public JsonResult GetData(string num)
         {
-            //ServiceReference1.Service1Client sa = new ServiceReference1.Service1Client();
-            //string wcfdata = await sa.GetDataAsync(s);
-            //string wcfdata = sa.GetData(Convert.ToInt32(s));
-            //string url = "http://192.168.1.109:8045/Service1.svc";
-            //IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
-            //int result = proxy.Add(1, 3);
-            //string wcfdata = ExecuteMethod<IService1>("net.tcp://192.168.0.109:8045/Service1", "GetData", new object[] { 123 }).ToString();
-
-            //MyServiceReference.MyServiceClient sa = new MyServiceReference.MyServiceClient();
-            //string wcfdata = await sa.GetDataAsync(s);
-            string url = "http://192.168.1.109:8045/MyService.svc";
-            IMyService proxy = WcfInvokeFactory.CreateServiceByUrl<IMyService>(url);
-            string wcfdata = proxy.GetData(s);
-            //Console.WriteLine(result);
+            string wcfdata = "hello"+num;
             return Json(new { IsSuccess = true, wcfdata });
-
-
         }
 
         //public interface IService1
