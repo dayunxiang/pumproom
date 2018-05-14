@@ -59,10 +59,26 @@ namespace JuCheap.Core.Web.Controllers
         [HttpPost]
         public JsonResult GetData(string num)
         {
-            string wcfdata = "hello"+num;
-            return Json(new { IsSuccess = true, wcfdata });
-        }
 
+
+            //string wcfdata = "hello"+num;
+            string url = "http://192.168.1.100:8080/Service1.svc";
+            IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+            //string wcfdata = proxy.GetData(s);
+            //Console.WriteLine(result);
+            string wcfdata = proxy.ControlLock()+"hello"+num;
+            return Json(new { IsSuccess = true, wcfdata });
+            //return Json(new { IsSuccess = true, wcfdata });
+        }
+        [HttpPost]
+        public JsonResult GetData1(string data)
+        {
+            //string wcfdata = "hello,this is second   "+data;
+            string url= "http://192.168.1.100:8080/Service1.svc";
+            IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+            string wcfdata = proxy.GetData( Convert.ToInt32(data)) + "hello" + data;
+            return Json(new { IsSuccess = true, wcfdata});
+        }
         //public interface IService1
         //{
         //    string GetData(int value);
