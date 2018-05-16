@@ -1,0 +1,155 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model JuCheap.Core.Models.GisProDto
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>编辑Gis信息</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("Edit", "GisPro", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.站点名称)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.站点名称, new { @class = "form-control", placeholder = "站点名称" })
+                @Html.ValidationMessageFor(m => m.站点名称)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.分区名称)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.分区名称, new { @class = "form-control", placeholder = "分区名称" })
+                @Html.ValidationMessageFor(m => m.分区名称)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.泵个数name)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.泵个数name, new { @class = "form-control", placeholder = "泵个数name" })
+                @Html.ValidationMessageFor(m => m.泵个数name)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.泵个数)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.泵个数, new { @class = "form-control", placeholder = "泵个数" })
+                @Html.ValidationMessageFor(m => m.泵个数)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.状态信息name)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.状态信息name, new { @class = "form-control", placeholder = "状态信息name" })
+                @Html.ValidationMessageFor(m => m.状态信息name)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.状态信息)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.状态信息, new { @class = "form-control", placeholder = "状态信息" })
+                @Html.ValidationMessageFor(m => m.状态信息)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.报警信息name)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.报警信息name, new { @class = "form-control", placeholder = "报警信息name" })
+                @Html.ValidationMessageFor(m => m.报警信息name)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.报警信息)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.报警信息, new { @class = "form-control", placeholder = "报警信息" })
+                @Html.ValidationMessageFor(m => m.报警信息)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.坐标)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.坐标, new { @class = "form-control", placeholder = "坐标" })
+                @Html.ValidationMessageFor(m => m.坐标)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.泵表编号)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.泵表编号, new { @class = "form-control", placeholder = "泵表编号" })
+                @Html.ValidationMessageFor(m => m.泵表编号)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.备用1)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.备用1, new { @class = "form-control", placeholder = "备用1" })
+                @Html.ValidationMessageFor(m => m.备用1)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.备用2)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.备用2, new { @class = "form-control", placeholder = "备用2" })
+                @Html.ValidationMessageFor(m => m.备用2)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.备用3)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.备用3, new { @class = "form-control", placeholder = "备用3" })
+                @Html.ValidationMessageFor(m => m.备用3)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">@Html.LabelFor(m => m.备用4)：</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.备用4, new { @class = "form-control", placeholder = "备用4" })
+                @Html.ValidationMessageFor(m => m.备用1)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+        <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Description)：</label>
+        <div class="col-sm-8">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "角色描述", rows = "3" })
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+    </div>*@
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button class="btn btn-info" type="submit">保存</button>
+                <button class="btn btn-white" type="button" id="btnBack">返回</button>
+            </div>
+        </div>
+}
+        </div>
+    </div>
+</div>
+@section scripts{
+    <environment names="Development">
+        <script src="~/js/jquery.validate.js"></script>
+        <script src="~/js/jquery.validate.unobtrusive.js"></script>
+        <script src="~/js/base.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/validate.min.js" asp-append-version="true"></script>
+        <script src="~/js/base.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        $("#btnBack").bind("click", function(e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+    </script>
+}
+
+

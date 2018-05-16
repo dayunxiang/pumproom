@@ -85,6 +85,7 @@ namespace JuCheap.Core.Web
             //×Ô¼ºÌí¼Ó
             services.AddScoped<ICameraPathService, CameraPathService>();
             services.AddScoped<IStationService, StationService>();
+            services.AddScoped<IGisProService, GisProService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

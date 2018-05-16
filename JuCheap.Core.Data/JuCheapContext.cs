@@ -126,7 +126,10 @@ namespace JuCheap.Core.Data
         /// 站点配置
         /// </summary>
         public DbSet<StationEntity> Stations { get; set; }
-
+        /// <summary>
+        /// 最新gis配置
+        /// </summary>
+        public DbSet<GisProEntity> GisPros { get; set; }
         #endregion
     }
 }

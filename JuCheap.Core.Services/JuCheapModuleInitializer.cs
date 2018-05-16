@@ -47,6 +47,8 @@ namespace JuCheap.Core.Services
 
             //station和dto
             config.CreateMap<StationEntity, StationDto>().ReverseMap();
+            //gispro和dto
+            config.CreateMap<GisProEntity, GisProDto>().ReverseMap();
         }
     }
 }
