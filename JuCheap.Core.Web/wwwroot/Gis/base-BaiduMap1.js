@@ -65,6 +65,7 @@ var BaiduMapObj = (function () {
         stCtrl.setOffset(new BMap.Size(20, 20));
         map.addControl(stCtrl);//添加全景控件
     }
+    
     //创建marker
     this.addMarker = function (map,markerArr) {
         for (var i = 0; i < markerArr.length; i++) {

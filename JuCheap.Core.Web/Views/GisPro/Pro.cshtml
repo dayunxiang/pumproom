@@ -88,50 +88,55 @@
             <select data-placeholder="请选择泵房..." class="chosen-select" style="width:350px;" tabindex="2" id="select">
                 <option value="">请选择泵房</option>
                 @{
-        foreach (var item in Model)
-        {
-            <option value=@item.坐标 hassubinfo="true">@item.站点名称</option>
+            foreach (var item in Model)
+            {
+                <option value=@item.坐标 hassubinfo="true">@item.站点名称</option>
 
 }
                 }
                 @*<option value="110000" hassubinfo="true">北京</option>
-        <option value="120000" hassubinfo="true">天津</option>
-        <option value="130000" hassubinfo="true">河北省</option>
-        <option value="140000" hassubinfo="true">山西省</option>
-        <option value="150000" hassubinfo="true">内蒙古自治区</option>
-        <option value="210000" hassubinfo="true">辽宁省</option>
-        <option value="220000" hassubinfo="true">吉林省</option>
-        <option value="230000" hassubinfo="true">黑龙江省</option>
-        <option value="310000" hassubinfo="true">上海</option>
-        <option value="320000" hassubinfo="true">江苏省</option>
-        <option value="330000" hassubinfo="true">浙江省</option>
-        <option value="340000" hassubinfo="true">安徽省</option>
-        <option value="350000" hassubinfo="true">福建省</option>
-        <option value="360000" hassubinfo="true">江西省</option>
-        <option value="370000" hassubinfo="true">山东省</option>
-        <option value="410000" hassubinfo="true">河南省</option>
-        <option value="420000" hassubinfo="true">湖北省</option>
-        <option value="430000" hassubinfo="true">湖南省</option>
-        <option value="440000" hassubinfo="true">广东省</option>
-        <option value="450000" hassubinfo="true">广西壮族自治区</option>
-        <option value="460000" hassubinfo="true">海南省</option>
-        <option value="500000" hassubinfo="true">重庆</option>
-        <option value="510000" hassubinfo="true">四川省</option>
-        <option value="520000" hassubinfo="true">贵州省</option>
-        <option value="530000" hassubinfo="true">云南省</option>
-        <option value="540000" hassubinfo="true">西藏自治区</option>
-        <option value="610000" hassubinfo="true">陕西省</option>
-        <option value="620000" hassubinfo="true">甘肃省</option>
-        <option value="630000" hassubinfo="true">青海省</option>
-        <option value="640000" hassubinfo="true">宁夏回族自治区</option>
-        <option value="650000" hassubinfo="true">新疆维吾尔自治区</option>
-        <option value="710000" hassubinfo="true">台湾省</option>
-        <option value="810000" hassubinfo="true">香港特别行政区</option>
-        <option value="820000" hassubinfo="true">澳门特别行政区</option>
-        <option value="990000" hassubinfo="true">海外</option>*@
+            <option value="120000" hassubinfo="true">天津</option>
+            <option value="130000" hassubinfo="true">河北省</option>
+            <option value="140000" hassubinfo="true">山西省</option>
+            <option value="150000" hassubinfo="true">内蒙古自治区</option>
+            <option value="210000" hassubinfo="true">辽宁省</option>
+            <option value="220000" hassubinfo="true">吉林省</option>
+            <option value="230000" hassubinfo="true">黑龙江省</option>
+            <option value="310000" hassubinfo="true">上海</option>
+            <option value="320000" hassubinfo="true">江苏省</option>
+            <option value="330000" hassubinfo="true">浙江省</option>
+            <option value="340000" hassubinfo="true">安徽省</option>
+            <option value="350000" hassubinfo="true">福建省</option>
+            <option value="360000" hassubinfo="true">江西省</option>
+            <option value="370000" hassubinfo="true">山东省</option>
+            <option value="410000" hassubinfo="true">河南省</option>
+            <option value="420000" hassubinfo="true">湖北省</option>
+            <option value="430000" hassubinfo="true">湖南省</option>
+            <option value="440000" hassubinfo="true">广东省</option>
+            <option value="450000" hassubinfo="true">广西壮族自治区</option>
+            <option value="460000" hassubinfo="true">海南省</option>
+            <option value="500000" hassubinfo="true">重庆</option>
+            <option value="510000" hassubinfo="true">四川省</option>
+            <option value="520000" hassubinfo="true">贵州省</option>
+            <option value="530000" hassubinfo="true">云南省</option>
+            <option value="540000" hassubinfo="true">西藏自治区</option>
+            <option value="610000" hassubinfo="true">陕西省</option>
+            <option value="620000" hassubinfo="true">甘肃省</option>
+            <option value="630000" hassubinfo="true">青海省</option>
+            <option value="640000" hassubinfo="true">宁夏回族自治区</option>
+            <option value="650000" hassubinfo="true">新疆维吾尔自治区</option>
+            <option value="710000" hassubinfo="true">台湾省</option>
+            <option value="810000" hassubinfo="true">香港特别行政区</option>
+            <option value="820000" hassubinfo="true">澳门特别行政区</option>
+            <option value="990000" hassubinfo="true">海外</option>*@
             </select>
 
             <button id="" class="btn btn-warning" type="button" onclick="ceshidown()"> <i class="fa fa-map-pin"></i> 定位</button>
+          
+                <label>经度</label>
+                <span id="jing_du"></span>
+                <label>纬度</label>
+                <span id="wei_du"></span>
 
         </span>
 
@@ -196,14 +201,54 @@
            function mainmap(var1) {
                 var pp0 = var1.split("|")[0];
                 var pp1 = var1.split("|")[1];
-                 map = BaiduMapObj.init("mapContent", pp0, pp1, 19);//创建和初始化地图
+               map = BaiduMapObj.init("mapContent", pp0, pp1, 19);//创建和初始化地图
+               map.addEventListener("click", function (e) {
+                   var jing_du_value = e.point.lng;
+                   var wei_du_value = e.point.lat;
+                   //alert(e.point.lng + "," + e.point.lat);
+                   var jing_du = document.getElementById("jing_du");
+                   var wei_du = document.getElementById("wei_du");
+                   jing_du.innerHTML = jing_du_value;
+                   wei_du.innerHTML = wei_du_value;
+               });
                 return map;
             }
            //var map= mainmap('114.011086|22.601413');
                
                 function searchMap() {
                     //重新初始化了一个map。
-                    BaiduMapObj.searchMap("mapContent", "txtWords");
+                    //BaiduMapObj.searchMap("mapContent", "txtWords");
+
+                    var area = document.getElementById("txtWords").value; //得到地区
+                    //alert(area);
+                    //map.setSearchCompleteCallback(function (rs) {
+                    //    if (ls.getStatus() == BMAP_STATUS_SUCCESS) {
+                    //        var poi = rs.getPoi(0);
+                    //        if (poi) {
+                    //            //BaiduMapObj.init(id, poi.point.lng, poi.point.lat);
+                    //            alert("ok");
+                    //            var point = poi.point.lng + "|" + poi.point.lat;
+                    //            mainmap(point);
+
+                    //        }
+                    //    }
+                    //});
+                    //map.search(area);
+                    var ls = new BMap.LocalSearch(map);
+                    ls.setSearchCompleteCallback(function (rs) {
+                        if (ls.getStatus() == BMAP_STATUS_SUCCESS) {
+                            var poi = rs.getPoi(0);
+                            if (poi) {
+                                //BaiduMapObj.init(id, poi.point.lng, poi.point.lat);
+                                //alert("ok");
+                               var point = poi.point.lng + "|" + poi.point.lat;
+                                mainmap(point);
+
+                            }
+                        }
+                    });
+                    ls.search(area);
+                   
                 }
                 function add_overlay() {
                     //在这里进行ajax通信获取markerarr，将数据库中的数据转换为json。建立一个和mark类似的表。
@@ -311,6 +356,7 @@
 
                 //}
             mainmap('114.011086|22.601413');
+            
                        
 
             
