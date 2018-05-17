@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using JuCheap.Core.Data;
 using JuCheap.Core.Infrastructure.Extentions;
 using JuCheap.Core.Interfaces;
 using JuCheap.Core.Models;
@@ -13,6 +14,7 @@ using JuCheap.Core.Web.Mysql.BLL;
 using JuCheap.Core.Web.Mysql.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace JuCheap.Core.Web.Controllers
@@ -22,10 +24,12 @@ namespace JuCheap.Core.Web.Controllers
     {
         private readonly IGisProService _gisProService;
         private readonly IMapper _mapper; 
-        public GisProController(IGisProService gisProSvc,IMapper mapper)
+        private readonly JuCheapContext _context;
+        public GisProController(IGisProService gisProSvc,IMapper mapper, JuCheapContext context)
         {
             _gisProService = gisProSvc;
             _mapper = mapper;
+            _context = context;
         }
         public IActionResult Index()
         {
@@ -81,9 +85,10 @@ namespace JuCheap.Core.Web.Controllers
             return Json(result);
         }
 
-        public IActionResult Pro()
+        public async Task<IActionResult> Pro()
         {
-            return View();
+
+            return View(await _context.GisPros.Where(item => !item.IsDeleted).ToListAsync());
         }
         [HttpPost]
         public JsonResult GetMarkerArr(string id)

@@ -92,6 +92,11 @@ namespace JuCheap.Core.Web.Controllers
             return Json(jsonData);
         }
 
+        public IActionResult Down()
+        {
+            return View();
+        }
+
 
 
 
