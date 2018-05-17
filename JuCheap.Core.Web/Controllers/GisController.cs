@@ -27,6 +27,8 @@ namespace JuCheap.Core.Web.Controllers
         {
             DbSet<MarkerArrEntity> sb = _context.MarkerArrs;
             List<MarkerArrEntity> list = sb.ToList();
+            //DbSet<GisProEntity> sb = _context.GisPros;
+            //List<GisProEntity> list = sb.ToList();
             string json = JsonConvert.SerializeObject(list);
             return Json(new { IsSuccess = true, json });
         }

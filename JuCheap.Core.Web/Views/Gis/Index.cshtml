@@ -187,7 +187,7 @@
 
     <script type="text/javascript" src="~/Gis/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=iWdBygRQc81gKvR2HuRVNtEbSR3Fpm0Z"></script>
-    <script src="~/Gis/base-BaiduMap.js"></script>
+    <script src="~/Gis/base-BaiduMap.js" charset= "UTF-8"></script>
 
     <script type="text/javascript">
         //标注点数组
@@ -240,8 +240,11 @@
                             //var str = result.json.parseJSON();
                             //result.json是字符串不是json的对象，然而对于json的对象来说，不管key有没有双引号都已可行的。所以说将字符串转换为json才是王道。
                             var str = JSON.parse(result.json);
+                            
+                            //alert(str[0].坐标);
                             //alert(str.length);
                             BaiduMapObj.addMarker(map, str);//向地图中添加marker
+                            
                             BaiduMapObj.addOverLay(map, str);//向地图中添加覆盖物
 
                         } else {

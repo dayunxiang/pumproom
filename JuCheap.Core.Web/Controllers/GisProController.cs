@@ -9,8 +9,11 @@ using JuCheap.Core.Models;
 using JuCheap.Core.Models.Filters;
 using JuCheap.Core.Web.Filters;
 using JuCheap.Core.Web.Models;
+using JuCheap.Core.Web.Mysql.BLL;
+using JuCheap.Core.Web.Mysql.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace JuCheap.Core.Web.Controllers
 {
@@ -76,6 +79,22 @@ namespace JuCheap.Core.Web.Controllers
                 result.flag = await _gisProService.DeleteAsync(ids);
             }
             return Json(result);
+        }
+
+        public IActionResult Pro()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult GetMarkerArr(string id)
+        {
+            //DbSet<MarkerArrEntity> sb = _context.MarkerArrs;
+            //List<MarkerArrEntity> list = sb.ToList();
+            //DbSet<GisProEntity> sb = _context.GisPros;
+            //List<GisProEntity> list = sb.ToList();
+            List<GisData> list =(List<GisData>) new GisData_BLL().GetAll();
+            string json = JsonConvert.SerializeObject(list);
+            return Json(new { IsSuccess = true, json });
         }
     }
 }
