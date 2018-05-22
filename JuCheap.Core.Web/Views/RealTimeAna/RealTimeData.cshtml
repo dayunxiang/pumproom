@@ -183,6 +183,14 @@
 
         });
 
+        function refresh() {
+            $("#jqGrid").jqGrid("setGridParam", {
+                postData: {}
+            }).trigger("reloadGrid");
+
+        }
+        var inter = setInterval("refresh()", 60000);
+
 
     </script>
 

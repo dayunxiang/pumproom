@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "RealTimeData";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+
+
+@section styles
+    {
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/jqgrid/css/trirand/ui.jqgrid-bootstrap.css" />
+    <style>
+        .class1 {
+            /*background: red*/
+            /*background-color: #7CCD7C*/
+            background-color: #DFF0D8
+        }
+    </style>
+
+}
+@section scripts
+    {
+    <script type="text/ecmascript" src="~/jqgrid/js/jquery.min.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/i18n/grid.locale-en.js"></script>
+    <script type="text/ecmascript" src="~/jqgrid/js/trirand/jquery.jqGrid.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $.jgrid.defaults.width = 780;
+        $(document).ready(function () {
+
+            //$(window).resize(function () {
+            //    $("#jqGrid").setGridWidth($(window).width());
+            //});
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $("#jqGrid").setGridWidth(width);
+            });
+
+            $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData3")',
+                mtype: "POST",
+                styleUI: 'Bootstrap',
+                datatype: "json",
+                colNames: ['编号', '分区', '站点', '上传时间', '1#泵运行状态', '2#泵运行状态', '3#泵运行状态', '4#泵运行状态', '5#泵运行状态', '6#泵运行状态', '1#小泵运行状态', '2#小泵运行状态', '1#泵手自动状态', '2#泵手自动状态', '3#泵手自动状态', '4#泵手自动状态', '5#泵手自动状态', '6#泵手自动状态', '1#小泵手自动状态', '2#小泵手自动状态', '系统运行状态', 'PLC故障状态', '压力报警状态', '水箱缺水状态', '1#变频器状态', '2#变频器状态', '3#变频器状态', '4#变频器状态', '阀门开关状态', '阀门到位状态', '停机报警', '泵房进水报警状态', '停电来电报警状态', '门禁报警状态', '烟感报警状态', '污水泵启停状态'],//jqGrid的列显示名字
+                colModel: [ //jqGrid每一列的配置信息。包括名字，索引，宽度,对齐方式.....
+                    { name: 'id', index: 'id', width: 55, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '分区', index: '分区', width: 90, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '站点', index: '站点', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                    { name: '上传时间', index: '上传时间', width: 150, frozen: true, sortable: false, classes: 'class1'},
+                   
+                    { name: '1#泵运行状态', index: '1#泵运行状态', width: 130 },
+                    { name: '2#泵运行状态', index: '2#泵运行状态', width: 130 },
+                    { name: '3#泵运行状态', index: '3#泵运行状态', width: 130 },
+                    { name: '4#泵运行状态', index: '4#泵运行状态', width: 130 },
+                    { name: '5#泵运行状态', index: '5#泵运行状态', width: 130 },
+                    { name: '6#泵运行状态', index: '6#泵运行状态', width: 130 },
+                    { name: '1#小泵运行状态', index: '1#小泵运行状态', width: 140 },
+                    { name: '2#小泵运行状态', index: '2#小泵运行状态', width: 140 },
+                    { name: '1#泵手自动状态', index: '1#泵手自动状态', width: 140 },
+                    { name: '2#泵手自动状态', index: '2#泵手自动状态', width: 140 },
+                    { name: '3#泵手自动状态', index: '3#泵手自动状态', width: 140 },
+                    { name: '4#泵手自动状态', index: '4#泵手自动状态', width: 140 },
+                    { name: '5#泵手自动状态', index: '5#泵手自动状态', width: 140 },
+                    { name: '6#泵手自动状态', index: '6#泵手自动状态', width: 140 },
+                    { name: '1#小泵手自动状态', index: '1#小泵手自动状态', width: 150 },
+                    { name: '2#小泵手自动状态', index: '2#小泵手自动状态', width: 150 },
+                    { name: '系统运行状态', index: '系统运行状态', width: 120 },
+                    { name: 'PLC故障状态', index: 'PLC故障状态', width: 120 },
+                    { name: '压力报警状态', index: '压力报警状态', width: 120 },
+                    { name: '水箱缺水状态', index: '水箱缺水状态', width: 120 },
+                    { name: '1#变频器状态', index: '1#变频器状态', width: 120 },
+                    { name: '2#变频器状态', index: '2#变频器状态', width: 120 },
+                    { name: '3#变频器状态', index: '3#变频器状态', width: 120 },
+                    { name: '4#变频器状态', index: '4#变频器状态', width: 120 },
+                    { name: '阀门开关状态', index: '阀门开关状态', width: 120 },
+                    { name: '阀门到位状态', index: '阀门到位状态', width: 120 },
+                    { name: '停机报警', index: '停机报警', width: 80 },
+                    { name: '泵房进水报警状态', index: '泵房进水报警状态', width: 150 },
+                    { name: '停电来电报警状态', index: '停电来电报警状态', width: 150 },
+                    { name: '门禁报警状态', index: '门禁报警状态', width: 120 },
+                    { name: '烟感报警状态', index: '烟感报警状态', width: 120 },
+                    { name: '污水泵启停状态', index: '污水泵启停状态', width: 120 }
+                    
+
+
+                ],
+
+                viewrecords: true,
+                height: "100%",
+                rowNum: 10,
+                pager: "#jqGridPager",
+
+                altRows: true,
+                rowList: [10, 20, 30],//可供用户选择一页显示多少条
+                //这是传输到后面的信息。
+                sortname: 'hehda',//初始化的时候排序的字段
+                sortorder: "desc",//排序方式,可选desc,asc
+                mtype: "post",//向后台请求数据的ajax的类型。可选post,get
+                viewrecords: true,
+                caption: "站点状态监控",//表格的标题名字,
+
+                //autowidth: true
+                width: $("#tabs").width(),
+                shrinkToFit: false,
+                autoScroll: true,         //shrinkToFit: false,autoScroll: true,这两个属性产生水平滚动条
+                autowidth: false          //必须要,否则没有水平滚动条
+            });
+
+            $("#jqGrid").jqGrid('setFrozenColumns');
+            jQuery("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: false, add: false, del: false });
+
+        });
+
+        function refresh() {
+            $("#jqGrid").jqGrid("setGridParam", {
+                postData: {}
+            }).trigger("reloadGrid");
+
+        }
+        var inter = setInterval("refresh()", 60000);
+    </script>
+
+
+
+}
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<meta charset="utf-8" />
+<title>jqGrid Loading Data - Million Rows from a REST service</title>
+
+
+
+
+
+<div>
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-content">
+                    <div class="jqGrid_wrapper">
+
+                        <table id="jqGrid"></table>
+                        <div id="jqGridPager"></div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
