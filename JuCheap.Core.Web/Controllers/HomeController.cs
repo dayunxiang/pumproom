@@ -68,8 +68,8 @@ namespace JuCheap.Core.Web.Controllers
             var model = new LoginDto
             {
                 ReturnUrl = Request.Query["ReturnUrl"],
-                LoginName = "admin",
-                Password = "qwaszx"
+                LoginName = "paulin",
+                Password = "libaoping"
             };
             return View(model);
         }

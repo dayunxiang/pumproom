@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "_Layout";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+@section styles
+    {
+    <environment names="Development">
+        <link href="~/css/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/grid.min.css" asp-append-version="true" />
+    </environment>
+}
+
+<body>
+
+
+    @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>抄表系统配置</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="form-group">
+                    <button id="btnPart" type="button" class="btn btn-primary " onclick="Part()"><i class="fa fa-check"></i>&nbsp;单价配置</button>
+                    <button id="btnPart1" type="button" class="btn btn-info " onclick="Part1()"><i class="fa fa-check"></i> 住户类型配置</button>
+
+                    @*<a asp-area="" asp-controller="AskFor" asp-action="Part">单价配置</a>
+                    <a asp-area="" asp-controller="AskFor" asp-action="Part1">住户类型配置</a>*@
+                </div>
+
+
+                <div>
+
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+@section scripts
+    {
+
+
+    <environment names="Development">
+        <script src="~/js/plugins/jqgrid/jquery.jqGrid.js"></script>
+        <script src="~/js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+        <script src="~/js/jqgrid-list.js"></script>
+        <script src="~/js/json2.js"></script>
+        <script src="~/js/base.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/grid.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+
+         function Part() {
+           
+            window.location.href = "@Url.Action("Part")";
+        }
+         function Part1() {
+           
+            window.location.href = "@Url.Action("Part1")";
+        }
+    </script>
+}
