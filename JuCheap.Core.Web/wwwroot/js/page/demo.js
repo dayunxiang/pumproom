@@ -14,7 +14,7 @@ $(function () {
     }
 
     // 初始化插件参数及插入插件
-    WebVideoCtrl.I_InitPlugin(document.body.clientWidth, 600, {
+    WebVideoCtrl.I_InitPlugin(document.body.clientWidth*0.8, 600, {
         bWndFull: true,//是否支持单窗口双击全屏，默认支持 true:支持 false:不支持
         iWndowType: 2,
         cbSelWnd: function (xmlDoc) {
@@ -39,7 +39,7 @@ $(function () {
                 var oSize = getWindowSize();
                 $Restart.css({
                     width: oSize.width + "px",
-                    height: oSize.height + "px"
+                    height: oSize.height+ "px"
                 });
             }
         }

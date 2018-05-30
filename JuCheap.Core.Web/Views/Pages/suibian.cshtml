@@ -90,6 +90,21 @@
         height: 24px;
     }
 
+
+    .chart {
+        float: right;
+        width: 20%;
+        height: 600px;
+        /*margin-top: 20px;
+        margin-left: 2%;*/
+        /*background-color: #becbb5;*/
+        border: 1px solid #7F9DB9;
+    }
+    .divPlugin {
+        float:left;
+        width:80%;
+        height:600px;
+    }
     /*登录*/
     .login {
         float: left;
@@ -100,6 +115,7 @@
         background-color: #becbb5;
         border: 1px solid #7F9DB9;
     }
+
 
         .login:hover {
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
@@ -244,7 +260,17 @@
 <body>
     <div>
         <!--画面展示-->
-        <div id="divPlugin" align="center"></div>
+       
+        <div>
+            <div id="divPlugin" align="left" class="divPlugin"></div>
+            <div class="chart">
+                <div class="title"><p class="title-font">数据</p></div>
+            </div>
+        </div>
+        @*<div id="chart" align="right">
+            hello
+            </div>*@
+       
         <!--第一行-->
         <div>
             <!--登录-->
