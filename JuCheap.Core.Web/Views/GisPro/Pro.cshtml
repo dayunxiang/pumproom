@@ -82,7 +82,7 @@
     <div class="input-group clockpicker col-sm-12" data-autoclose="true">
 
 
-        <input disabled type="text" value="报警信息:目前正常" class="form-control" />
+        <input id="alarm" disabled type="text" value="报警信息:目前正常" class="form-control" />
 
         <span class="input-group">
             <select data-placeholder="请选择泵房..." class="chosen-select" style="width:350px;" tabindex="2" id="select">
@@ -132,11 +132,12 @@
             </select>
 
             <button id="" class="btn btn-warning" type="button" onclick="ceshidown()"> <i class="fa fa-map-pin"></i> 定位</button>
-          
+          <button class="btn btn-warning" type="button" onclick="OnAlarm()"> 报警弹框</button>
                 <label>经度</label>
                 <span id="jing_du"></span>
                 <label>纬度</label>
                 <span id="wei_du"></span>
+            
 
         </span>
 
@@ -198,6 +199,7 @@
             var a = 1;
             var flag = 0;
             var map;
+            var flag1 = 0;
            function mainmap(var1) {
                 var pp0 = var1.split("|")[0];
                 var pp1 = var1.split("|")[1];
@@ -324,7 +326,8 @@
                 }
                 if (a == 1) {
                     var inter = setInterval("refresh()", 3000);
-                }
+            }
+            setInterval("getalarm()", 3000);
 
                 function sw() {
 
@@ -334,6 +337,61 @@
                 function sw1() {
 
                     clearInterval(inter);
+            }
+            function OnAlarm() {
+                if (flag1 == 0) {
+                    flag1 = 1;
+
+                }
+                else {
+                    flag1 = 0;
+
+                }
+
+            }
+
+            function getalarm() {
+                $.ajax({
+                    url: "/GisPro/GetAlarm",  
+                    type: "POST",
+                    dataType: "json",   
+                    data: {},
+                    success:
+                        function (result) {
+
+                            if (!result.IsSuccess) {
+                                //alert(result.message);
+                                document.getElementById("alarm").value = "报警信息：" + result.message;
+                                var s = "一切正常";
+                                if (result.message != s) {
+                                    if (flag1 == 0) {
+                                        alert(result.message);
+
+                                    }
+                                   
+
+                                }
+
+                            } else {
+                                alert("The result is failed!");
+                            }
+                        },
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("系统繁忙,请稍候");
+                    },
+                    
+                    complete: function (XMLHttpRequest, textStatus) {
+                        
+                    },
+                    
+                    statusCode: {
+                        404: function () {
+                            alert('404，页面不存在');
+                        }
+                    }
+                });
+
             }
 
             function ceshidown() {

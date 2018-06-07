@@ -21,13 +21,13 @@ namespace JuCheap.Core.Web.Controllers
         //返回所有的station然后用于显示列表
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Stations.Where(item=>item.IsDeleted).ToListAsync());
+            return View(await _context.Stations.Where(item=>!item.IsDeleted).ToListAsync());
         }
         //传入的是站点的名称
         public async Task<IActionResult> AllView(string s)
         {
             ViewData["stationname"] = s;
-            return View(await _context.Stations.Where(item=>item.IsDeleted)
+            return View(await _context.Stations.Where(item=>!item.IsDeleted)
                 .Where(item=>item.站点名称==s).ToListAsync());
         }
         //输入参数，站点名称

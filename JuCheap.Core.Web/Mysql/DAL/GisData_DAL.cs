@@ -37,5 +37,16 @@ namespace JuCheap.Core.Web.Mysql.DAL
             }
             return list;
         }
+
+        public string GetAlarm()
+        {
+            DataTable dt = MySqlHelper.ExecuteDataTable("select Alarmcontext from alarms where Id=1;");
+            string s = "";
+            foreach(DataRow dr in dt.Rows)
+            {
+                s = dr["Alarmcontext"].ToString();
+            }
+            return s;
+        }
     }
 }

@@ -13,5 +13,9 @@ namespace JuCheap.Core.Web.Mysql.BLL
         {
             return new GisData_DAL().GetAll();
         }
+        public string GetAlarm()
+        {
+            return new GisData_DAL().GetAlarm();
+        }
     }
 }

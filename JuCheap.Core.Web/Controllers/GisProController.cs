@@ -101,5 +101,12 @@ namespace JuCheap.Core.Web.Controllers
             string json = JsonConvert.SerializeObject(list);
             return Json(new { IsSuccess = true, json });
         }
+        [HttpPost]
+        public JsonResult GetAlarm()
+        {
+            //获取报警信息
+            string message = new GisData_BLL().GetAlarm();
+            return Json(new { IsSuccess = true, message });
+        }
     }
 }
