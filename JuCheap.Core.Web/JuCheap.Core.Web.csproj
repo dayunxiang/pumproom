@@ -37,4 +37,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\video\" />
+  </ItemGroup>
 </Project>

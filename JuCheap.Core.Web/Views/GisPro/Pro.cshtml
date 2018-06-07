@@ -88,61 +88,67 @@
             <select data-placeholder="请选择泵房..." class="chosen-select" style="width:350px;" tabindex="2" id="select">
                 <option value="">请选择泵房</option>
                 @{
-            foreach (var item in Model)
-            {
-                <option value=@item.坐标 hassubinfo="true">@item.站点名称</option>
+                foreach (var item in Model)
+                {
+                    <option value=@item.坐标 hassubinfo="true">@item.站点名称</option>
 
-}
+            }
                 }
                 @*<option value="110000" hassubinfo="true">北京</option>
-            <option value="120000" hassubinfo="true">天津</option>
-            <option value="130000" hassubinfo="true">河北省</option>
-            <option value="140000" hassubinfo="true">山西省</option>
-            <option value="150000" hassubinfo="true">内蒙古自治区</option>
-            <option value="210000" hassubinfo="true">辽宁省</option>
-            <option value="220000" hassubinfo="true">吉林省</option>
-            <option value="230000" hassubinfo="true">黑龙江省</option>
-            <option value="310000" hassubinfo="true">上海</option>
-            <option value="320000" hassubinfo="true">江苏省</option>
-            <option value="330000" hassubinfo="true">浙江省</option>
-            <option value="340000" hassubinfo="true">安徽省</option>
-            <option value="350000" hassubinfo="true">福建省</option>
-            <option value="360000" hassubinfo="true">江西省</option>
-            <option value="370000" hassubinfo="true">山东省</option>
-            <option value="410000" hassubinfo="true">河南省</option>
-            <option value="420000" hassubinfo="true">湖北省</option>
-            <option value="430000" hassubinfo="true">湖南省</option>
-            <option value="440000" hassubinfo="true">广东省</option>
-            <option value="450000" hassubinfo="true">广西壮族自治区</option>
-            <option value="460000" hassubinfo="true">海南省</option>
-            <option value="500000" hassubinfo="true">重庆</option>
-            <option value="510000" hassubinfo="true">四川省</option>
-            <option value="520000" hassubinfo="true">贵州省</option>
-            <option value="530000" hassubinfo="true">云南省</option>
-            <option value="540000" hassubinfo="true">西藏自治区</option>
-            <option value="610000" hassubinfo="true">陕西省</option>
-            <option value="620000" hassubinfo="true">甘肃省</option>
-            <option value="630000" hassubinfo="true">青海省</option>
-            <option value="640000" hassubinfo="true">宁夏回族自治区</option>
-            <option value="650000" hassubinfo="true">新疆维吾尔自治区</option>
-            <option value="710000" hassubinfo="true">台湾省</option>
-            <option value="810000" hassubinfo="true">香港特别行政区</option>
-            <option value="820000" hassubinfo="true">澳门特别行政区</option>
-            <option value="990000" hassubinfo="true">海外</option>*@
+                <option value="120000" hassubinfo="true">天津</option>
+                <option value="130000" hassubinfo="true">河北省</option>
+                <option value="140000" hassubinfo="true">山西省</option>
+                <option value="150000" hassubinfo="true">内蒙古自治区</option>
+                <option value="210000" hassubinfo="true">辽宁省</option>
+                <option value="220000" hassubinfo="true">吉林省</option>
+                <option value="230000" hassubinfo="true">黑龙江省</option>
+                <option value="310000" hassubinfo="true">上海</option>
+                <option value="320000" hassubinfo="true">江苏省</option>
+                <option value="330000" hassubinfo="true">浙江省</option>
+                <option value="340000" hassubinfo="true">安徽省</option>
+                <option value="350000" hassubinfo="true">福建省</option>
+                <option value="360000" hassubinfo="true">江西省</option>
+                <option value="370000" hassubinfo="true">山东省</option>
+                <option value="410000" hassubinfo="true">河南省</option>
+                <option value="420000" hassubinfo="true">湖北省</option>
+                <option value="430000" hassubinfo="true">湖南省</option>
+                <option value="440000" hassubinfo="true">广东省</option>
+                <option value="450000" hassubinfo="true">广西壮族自治区</option>
+                <option value="460000" hassubinfo="true">海南省</option>
+                <option value="500000" hassubinfo="true">重庆</option>
+                <option value="510000" hassubinfo="true">四川省</option>
+                <option value="520000" hassubinfo="true">贵州省</option>
+                <option value="530000" hassubinfo="true">云南省</option>
+                <option value="540000" hassubinfo="true">西藏自治区</option>
+                <option value="610000" hassubinfo="true">陕西省</option>
+                <option value="620000" hassubinfo="true">甘肃省</option>
+                <option value="630000" hassubinfo="true">青海省</option>
+                <option value="640000" hassubinfo="true">宁夏回族自治区</option>
+                <option value="650000" hassubinfo="true">新疆维吾尔自治区</option>
+                <option value="710000" hassubinfo="true">台湾省</option>
+                <option value="810000" hassubinfo="true">香港特别行政区</option>
+                <option value="820000" hassubinfo="true">澳门特别行政区</option>
+                <option value="990000" hassubinfo="true">海外</option>*@
             </select>
 
             <button id="" class="btn btn-warning" type="button" onclick="ceshidown()"> <i class="fa fa-map-pin"></i> 定位</button>
-          <button class="btn btn-warning" type="button" onclick="OnAlarm()"> 报警弹框</button>
-                <label>经度</label>
-                <span id="jing_du"></span>
-                <label>纬度</label>
-                <span id="wei_du"></span>
-            
+            <button class="btn btn-warning" type="button" onclick="OnAlarm()"> 报警弹框</button>
+            <label>经度</label>
+            <span id="jing_du"></span>
+            <label>纬度</label>
+            <span id="wei_du"></span>
+
 
         </span>
+        <audio id="bgWarn" controls="controls" preload="none" class="hidden">
+            @*<source src="song.ogg" type="audio/ogg" />*@
+            <source src="~/video/read.mp3" type="audio/mpeg" />
+           
+        </audio>
 
-       
-        @*@{ 
+
+
+        @*@{
             foreach(var item in Model)
             {
                 <h1>@item.站点名称 </h1>
@@ -200,6 +206,7 @@
             var flag = 0;
             var map;
             var flag1 = 0;
+            var audio = document.getElementById("bgWarn");
            function mainmap(var1) {
                 var pp0 = var1.split("|")[0];
                 var pp1 = var1.split("|")[1];
@@ -364,6 +371,8 @@
                                 document.getElementById("alarm").value = "报警信息：" + result.message;
                                 var s = "一切正常";
                                 if (result.message != s) {
+                                    audio.load();
+                                    audio.play();
                                     if (flag1 == 0) {
                                         alert(result.message);
 
