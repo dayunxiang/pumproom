@@ -36,7 +36,7 @@ namespace JuCheap.Core.Models
         {
             get;set;
         }
-        [Display(Name = "泵房ID")]
+        [Display(Name = "泵表编号")]
         public string PumpRoomId
         {
             get;set;

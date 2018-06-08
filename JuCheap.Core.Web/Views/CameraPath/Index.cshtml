@@ -118,11 +118,12 @@
             var config = {
                 title: '列表',
                 url: '@Url.Action("GetListWithPager")',
-                colNames: ['主键', '泵房Id', '泵房名称', '信息', '监控登录名', '登陆密码', 'IP', '端口'],
+                colNames: ['主键', '泵房名称', '泵表编号', '信息', '监控登录名', '登陆密码', 'IP', '端口'],
                 colModel: [
                     { name: 'id', index: 'id', width: 25, key: true, hidden: true },
-                    { name: 'pumpRoomId', index: 'pumpRoomId', width: 25,hidden: true },
+                    
                     { name: 'pumpRoomName', index: 'pumpRoomName', width: 25 },
+                    { name: 'pumpRoomId', index: 'pumpRoomId', width: 25 },
                     { name: 'info', index: 'info', width: 25 },
                     { name: 'loginName', index: 'loginName', width: 25 },
                     { name: 'pwd', index: 'pwd', width: 25 },

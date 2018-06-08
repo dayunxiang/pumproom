@@ -9,8 +9,11 @@ using JuCheap.Core.Models;
 using JuCheap.Core.Models.Filters;
 using JuCheap.Core.Web.Filters;
 using JuCheap.Core.Web.Models;
+using JuCheap.Core.Web.Mysql.BLL;
+using JuCheap.Core.Web.Mysql.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace JuCheap.Core.Web.Controllers
 {
@@ -69,6 +72,7 @@ namespace JuCheap.Core.Web.Controllers
         }
         public async Task<IActionResult> Check(string id)
         {
+            //根据传入的列表的id，然后返回了整个camerapath的类。
             var model = await _cameraPathService.FindAsync(id);
             return View(model);
         }
@@ -86,5 +90,32 @@ namespace JuCheap.Core.Web.Controllers
             }
             return Json(result);
         }
+
+        /// <summary>
+        /// 返回摄像头界面旁边需要查询的数据
+        /// </summary>
+        /// <param name="tablename">不同的表名查询的不一样</param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetData(string tablename)
+        {
+            CameraSide p = new CameraSide_BLL().GetAll(tablename);
+            string json = JsonConvert.SerializeObject(p);
+            return Json(new { IsSuccess = true, json });
+        }
+        /// <summary>
+        /// 返回泵表编号
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetNum(string tablename)
+        {
+
+            string message = new CameraSide_BLL().GetNumByName(tablename);
+
+            return Json(new { IsSuccess = true, message });
+        }
+
+
     }
 }

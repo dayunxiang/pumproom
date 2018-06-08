@@ -8,6 +8,9 @@
     string Port = Model.Port;
     string LoginName = Model.LoginName;
     string Pwd = Model.Pwd;
+    string name = Model.PumpRoomName;
+    string[] number = Model.PumpRoomId.Split('-');
+    
 }
 
 
@@ -19,6 +22,169 @@
     <script src="~/js/page/web.js"></script>
     <script src="~/js/page/webVideoCtrl.js"></script>
     <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.js"></script>
+    <script type="text/javascript">
+        //看来js和cs同台操作。
+      function refresh() {
+
+
+                                  
+        var nums;
+        //首先获取nums，然后再进行操作。
+            $.ajax({
+                url: "/CameraPath/GetNum",
+                type: "POST",
+                dataType: "json",
+                data: { tablename: $("#name").val()},
+                success:
+                    function (result) {
+                        if (!result.IsSuccess) {
+                            //alert("ajax  ok");
+                            //alert(result.message);
+                            var numstring = result.message;
+                             nums = numstring.split('-');
+                            //alert(nums);
+                            //alert(nums.length);
+                            for (var i = 0; i < nums.length; i++) {
+                                if (nums[i] != "0") {
+                                    //alert(nums[i]);
+                                    //在这里进行ajax。
+                                    //alert("pumproom" + nums[i]);
+                                    var name = "pumproom" + nums[i];                      
+                                    DisplayData(name, i);
+                                   
+                                    
+                                    
+
+                                }
+
+                            }
+
+
+
+                        } else {
+                            alert("The result is failed!");
+                        }
+                    },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统繁忙,请稍候");
+                },
+                complete: function (XMLHttpRequest, textStatus) {
+
+                },
+                statusCode: {
+                    404: function () {
+                        alert('404，页面不存在');
+                    }
+                }
+          });
+          }
+        function hello() {
+            alert("hello");
+
+        }
+        //需要传入数据表和对应的泵房类型。0-高高，1-高，2-中，3-低
+        function DisplayData(name,num) {
+            //就是ajax获取数据然后显示在chart上
+            $.ajax({
+                url: "/CameraPath/GetData",  
+                type: "POST",
+                dataType: "json",
+                data: { tablename: name },
+                success:
+                    function (result) {
+
+                        if (!result.IsSuccess) {
+                            //alert("ajax ok");
+                            //返回的json的字符串
+                            //alert(result.json);
+                            //转换为了json
+                            //这个是清空数据表用来刷新
+                            if (num == 0) {
+                                $("#table1").html("");
+                            }
+                            if (num == 1) {
+                                $("#table2").html("");
+                            }
+                            if (num == 2) {
+                                $("#table3").html("");
+                            }
+                            if (num == 3) {
+                                $("#table4").html("");
+                            }                           
+                            var str = JSON.parse(result.json);
+                            var tbody = document.createElement("tbody");
+                            for (var key in str) {
+
+                                var tr = document.createElement("tr");
+                                var th = document.createElement("th");
+                                var td = document.createElement("td");
+
+                                
+                                th.innerHTML = key;
+                                td.innerHTML = str[key];
+                                tr.appendChild(th);
+                                tr.appendChild(td);
+                                tbody.appendChild(tr);
+                            }
+                            if (num == 0) {
+                                var parNode = document.getElementById("table1");
+                                parNode.appendChild(tbody);
+                            }
+                            if (num == 1) {
+                                var parNode = document.getElementById("table2");
+                                parNode.appendChild(tbody);
+                            }
+                            if (num == 2) {
+                                var parNode = document.getElementById("table3");
+                                parNode.appendChild(tbody);
+                            }
+                            if (num == 3) {
+                                var parNode = document.getElementById("table4");
+                                parNode.appendChild(tbody);
+                            }
+                           
+                            //alert(str);
+                            //document.getElementById("td1").innerHTML = "hello";
+                            //alert("this is getdata");
+
+                        } else {
+                            alert("The result is failed!");
+                        }
+                    },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统繁忙,请稍候");
+                },
+                //请求完成后回调函数 (请求成功或失败之后均调用)。参数： XMLHttpRequest 对象和一个描述成功请求类型的字符串
+                complete: function (XMLHttpRequest, textStatus) {
+                    //this 调用本次AJAX请求时传递的options参数
+                },
+                //一组数值的HTTP代码和函数对象，当响应时调用了相应的代码。例如，如果响应状态是404，将触发以下警报：
+                statusCode: {
+                    404: function () {
+                        alert('404，页面不存在');
+                    }
+                }
+            });
+
+                                    }
+
+
+
+                                    refresh();
+                                    setInterval("refresh()", 60000);
+
+
+       
+       
+
+        
+           
+
+        
+    </script>
 }
 <style>
 
@@ -94,6 +260,20 @@
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         width: 130px;
         height: 24px;
+    }
+    .chart {
+        float: right;
+        width: 20%;
+        height: 600px;
+        /*margin-top: 20px;
+        margin-left: 2%;*/
+        /*background-color: #becbb5;*/
+        border: 1px solid #7F9DB9;
+    }
+    .divPlugin {
+        float: left;
+        width: 80%;
+        height: 600px;
     }
 
     /*登录*/
@@ -250,7 +430,71 @@
 <body>
     <div>
         <!--画面展示-->
-        <div id="divPlugin" align="center"></div>
+        <div>
+            <div id="divPlugin" align="left" class="divPlugin"></div>
+            <div class="chart">
+                <div class="title"><p class="title-font">@name 实时数据</p></div>
+                <input type="text" id="name" class="hidden" value=@name />
+                
+                <!--在这里进行数据的显示-->
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        @if (number[0] != "0")
+            {
+                <li class="active">
+                    <a data-toggle="tab" href="#tab-1" aria-expanded="true">高高泵 </a>
+                </li>
+
+}
+                        @if (number[1] != "0")
+            {
+
+                <li class="">
+                    <a data-toggle="tab" href="#tab-2" aria-expanded="true">高泵</a>
+                </li>
+}
+                        @if (number[2] != "0")
+            {
+
+                <li class="">
+                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">中泵</a>
+                </li>
+}
+                        @if (number[3] != "0")
+            {
+                <li class="">
+                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">低泵</a>
+                </li>
+
+}
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body" style="height:520px;overflow:scroll">
+                                <table class="table table-bordered" id="table1"></table>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body" style="height:520px;overflow:scroll">
+                                <table class="table table-bordered" id="table2"></table>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                            <div class="panel-body" style="height:520px;overflow:scroll">
+                                <table class="table table-bordered" id="table3"></table>
+                            </div>
+                        </div>
+                        <div id="tab-4" class="tab-pane">
+                            <div class="panel-body" style="height:520px;overflow:scroll">
+                                <table class="table table-bordered" id="table4"></table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           </div>
+        
         <!--第一行-->
         <div>
             <!--登录-->
@@ -291,7 +535,7 @@
                                 <input type="button" class="btn2" value="全部停止" onclick="PlayCloseAll()" />
                                 <input type="button" class="btn1" value="退出" onclick="clickLogout();" />
                                 <input type="button" class="btn2" value="获取基本信息" onclick="clickGetDeviceInfo();" />
-                                <a asp-action="Index" >返回列表</a>
+                                <a asp-action="Index">返回列表</a>
                             </td>
                         </tr>
                         <tr>
@@ -610,12 +854,15 @@
                 </table>
             </div>
 
-           
+
         </div>
     </div>
 
     
 </body>
+
+
+
 
 
 

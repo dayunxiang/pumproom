@@ -713,6 +713,9 @@ namespace JuCheap.Core.Web.Mysql.DAL
             }
             return list;
         }
+
+
+
     }
 
 

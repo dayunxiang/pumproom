@@ -43,6 +43,9 @@
                                 泵房编号
                             </td>
                             <td>
+                                泵类型
+                            </td>
+                            <td>
                                 操作
                             </td>
                         </tr>
@@ -50,15 +53,18 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <th>
-                                    @Html.DisplayFor(modelItem => item.站点名称)
-                                </th>
-                                <td>
-                                    <a asp-action="ShowData" asp-route-s=@item.编号>查看数据</a>
-                                </td>
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.站点名称)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.分区类型)
+                            </td>
+                            <td>
+                                <a asp-action="ShowData" asp-route-s=@item.编号>查看数据</a>
+                            </td>
 
-                            </tr>
+                        </tr>
 
                         }
                     </tbody>
