@@ -131,6 +131,13 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.小泵1启停控制 = dr["1小泵启停控制"].ToString();
                 p.小泵2启停控制 = dr["2小泵启停控制"].ToString();
 
+
+                p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+                p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+                p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+                p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+                p.检修运行 = dr["检修运行"].ToString();
+
                 list.Add(p);
 
 
@@ -258,6 +265,13 @@ namespace JuCheap.Core.Web.Mysql.DAL
                     p.泵6启停控制 = dr["6泵启停控制"].ToString();
                     p.小泵1启停控制 = dr["1小泵启停控制"].ToString();
                     p.小泵2启停控制 = dr["2小泵启停控制"].ToString();
+
+                    //新增的
+                    p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+                    p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+                    p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+                    p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+                    p.检修运行 = dr["检修运行"].ToString();
 
 
                 }
@@ -413,6 +427,12 @@ namespace JuCheap.Core.Web.Mysql.DAL
             p.泵6启停控制 = dr["6泵启停控制"].ToString();
             p.小泵1启停控制 = dr["1小泵启停控制"].ToString();
             p.小泵2启停控制 = dr["2小泵启停控制"].ToString();
+
+            p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+            p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+            p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+            p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+            p.检修运行 = dr["检修运行"].ToString();
             return p;
         }
 
@@ -574,6 +594,12 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.小泵1启停控制 = dr["1小泵启停控制"].ToString();
                 p.小泵2启停控制 = dr["2小泵启停控制"].ToString();
 
+                p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+                p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+                p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+                p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+                p.检修运行 = dr["检修运行"].ToString();
+
                 list.Add(p);
 
 
@@ -689,6 +715,12 @@ namespace JuCheap.Core.Web.Mysql.DAL
             p.泵6启停控制 = dr["6泵启停控制"].ToString();
             p.小泵1启停控制 = dr["1小泵启停控制"].ToString();
             p.小泵2启停控制 = dr["2小泵启停控制"].ToString();
+
+            p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+            p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+            p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+            p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+            p.检修运行 = dr["检修运行"].ToString();
             return p;
 
         }

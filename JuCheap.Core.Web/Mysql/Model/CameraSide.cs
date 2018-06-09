@@ -83,6 +83,7 @@ namespace JuCheap.Core.Web.Mysql.Model
         public string 泵6启停控制 { get; set; }
 
         //新增的表中没有的，但是以后会有的。
+        public string V88和PLC通讯状态 { get; set; }
         public string 进口压力低值设定 { get; set; }
         public string 进口压力恢复值设定 { get; set; }
         public string 出口压力目标值设定 { get; set; }

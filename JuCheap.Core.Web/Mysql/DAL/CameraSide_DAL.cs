@@ -92,6 +92,11 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.泵5启停控制 = dr["5泵启停控制"].ToString();
                 p.泵6启停控制 = dr["6泵启停控制"].ToString();
                 //这里面还有未加的。
+                p.V88和PLC通讯状态 = dr["V88和PLC通讯状态"].ToString();
+                p.进口压力低值设定 = dr["进口压力低值设定"].ToString();
+                p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
+                p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
+                p.检修运行 = dr["检修运行"].ToString();
                
 
             }

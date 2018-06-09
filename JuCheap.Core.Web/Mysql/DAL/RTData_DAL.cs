@@ -136,6 +136,12 @@ namespace JuCheap.Core.Web.Mysql.DAL
                     list[k].泵6启停控制 = "";
                     list[k].小泵1启停控制 = "";
                     list[k].小泵2启停控制 = "";
+
+                    list[k].V88和PLC通讯状态 = "";
+                    list[k].进口压力低值设定 = "";
+                    list[k].进口压力恢复值设定 = "";
+                    list[k].出口压力目标值设定 = "";
+                    list[k].检修运行 = "";
                 }
                 else
                 {
@@ -244,6 +250,12 @@ namespace JuCheap.Core.Web.Mysql.DAL
                     list[k].泵6启停控制 = dt1.Rows[0]["6泵启停控制"].ToString();
                     list[k].小泵1启停控制 = dt1.Rows[0]["1小泵启停控制"].ToString();
                     list[k].小泵2启停控制 = dt1.Rows[0]["2小泵启停控制"].ToString();
+
+                    list[k].V88和PLC通讯状态 = dt1.Rows[0]["V88和PLC通讯状态"].ToString();
+                    list[k].进口压力低值设定 = dt1.Rows[0]["进口压力低值设定"].ToString();
+                    list[k].进口压力恢复值设定 = dt1.Rows[0]["进口压力恢复值设定"].ToString();
+                    list[k].出口压力目标值设定 = dt1.Rows[0]["出口压力目标值设定"].ToString();
+                    list[k].检修运行 = dt1.Rows[0]["检修运行"].ToString();
                 }
             }
 
