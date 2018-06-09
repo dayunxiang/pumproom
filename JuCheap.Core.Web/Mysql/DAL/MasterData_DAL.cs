@@ -1,4 +1,5 @@
 ﻿using JuCheap.Core.Web.Mysql.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,6 +37,23 @@ namespace JuCheap.Core.Web.Mysql.DAL
             md.小泵1启停控制 = dt.Rows[0]["1小泵启停控制"].ToString();
             md.小泵2启停控制 = dt.Rows[0]["2小泵启停控制"].ToString();
             return md;
+        }
+
+        /// <summary>
+        /// 根据站点名称查泵站的ip，查的是camerapath的表中的ip
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public string GetIpByName(string name)
+        {
+            DataTable dt = MySqlHelper.ExecuteDataTable("select Ip from camerapaths where PumpRoomName=@name; ", new MySqlParameter("name", name));
+            string ip = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                ip = dr["Ip"].ToString();
+            }
+            return ip;
+
         }
     }
 }

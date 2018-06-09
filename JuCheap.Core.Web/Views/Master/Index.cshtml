@@ -202,7 +202,7 @@
                     dataType: "json",    //根据返回数据类型可以有这些类型可选：xml html script json jsonp text
                     //发送到服务器的数据，可以直接传对象{a:0,b:1}，如果是get请求会自动拼接到url后面，如：&a=0&b=1
                     //如果为数组，jQuery 将自动为不同值对应同一个名称。如 {foo:["bar1", "bar2"]} 转换为 "&foo=bar1&foo=bar2"。
-                    data: { data: state },
+                    data: { name: $("#name").val(), data: state },
                     success:
                         function (result) {
 
@@ -392,6 +392,7 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h3>@s</h3>
+                <input type="text" id="name" class="hidden" value=@s />
                 @*<h4>@sb1  @sb2  @sb3 @sb4 @sb5 @sb6 @sb7 @sb8</h4>*@
                 
             </div>

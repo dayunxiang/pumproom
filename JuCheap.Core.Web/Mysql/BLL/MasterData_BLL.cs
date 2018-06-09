@@ -13,5 +13,10 @@ namespace JuCheap.Core.Web.Mysql.BLL
         {
             return new MasterData_DAL().GetMasterData(tablename);
         }
+        //根据站点名称获取泵站路由器的ip地址。
+        public string GetIpByName(string name)
+        {
+            return new MasterData_DAL().GetIpByName(name);
+        }
     }
 }

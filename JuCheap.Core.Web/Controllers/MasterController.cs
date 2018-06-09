@@ -24,6 +24,7 @@ namespace JuCheap.Core.Web.Controllers
         }
         public IActionResult Index(string s,string x)
         {
+            //s就是泵站的站点名称
             ViewData["Name"] = s;
             string Tablename = "pumproom" + x;
             MasterData md = new MasterData_BLL().GetMasterData(Tablename);   
@@ -62,6 +63,7 @@ namespace JuCheap.Core.Web.Controllers
 
 
             //string wcfdata = "hello"+num;
+            //从这里进行查询
             string url = "http://192.168.1.101:8051/Service1.svc";
             IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
             //string wcfdata = proxy.GetData(s);
@@ -70,11 +72,21 @@ namespace JuCheap.Core.Web.Controllers
             return Json(new { IsSuccess = true, wcfdata });
             //return Json(new { IsSuccess = true, wcfdata });
         }
+        /// <summary>
+        /// 作为示例自动查找泵站的ip地址。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost]
-        public JsonResult GetData1(string data)
+        public JsonResult GetData1(string name,string data)
         {
             //string wcfdata = "hello,this is second   "+data;
-            string url= "http://192.168.1.101:8051/Service1.svc";
+            //需要将泵站的名称传过来。
+            string port = "8051";
+            string ip = new MasterData_BLL().GetIpByName(name);
+            string url = "http://" + ip + ":" + port + "/Service1.svc";
+            //string url= "http://192.168.1.101:8051/Service1.svc";
             IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
             string wcfdata = proxy.GetData( Convert.ToInt32(data)) + "hello" + data;
             return Json(new { IsSuccess = true, wcfdata});
