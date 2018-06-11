@@ -23,6 +23,7 @@ namespace JuCheap.Core.Web
 {
     public class Startup
     {
+        //进行权限验证、登陆身份验证、服务添加。
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -62,7 +63,7 @@ namespace JuCheap.Core.Web
             //使用MySql数据库
             services.AddDbContext<JuCheapContext>(options => options.UseMySql(Configuration.GetConnectionString("Connection_MySql")));
 
-            //权限验证filter
+            //权限验证filter，一致在这里进行验证,主要进行ajax判断和跳转。
             services.AddMvc(cfg =>
             {
                 cfg.Filters.Add(new RightFilter());

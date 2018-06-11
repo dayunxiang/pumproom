@@ -2,7 +2,29 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_Content.cshtml";
+    int type = 5;
     string s = ViewData["Name"].ToString();
+    string y = ViewData["Type"].ToString();
+    if(y=="低层泵房")
+    {
+        type = 1;
+
+    }
+    if(y=="中层泵房")
+    {
+        type = 2;
+
+    }
+    if(y=="高层泵房")
+    {
+        type = 3;
+
+    }
+    if(y=="高高层泵房")
+    {
+        type = 4;
+
+    }
     string sb = Model.远程设定压力.ToString() + " " + Model.加泵频率.ToString() + " " + Model.减泵频率.ToString();
     string sb1;
     string sb2;
@@ -391,7 +413,7 @@
     <div>
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h3>@s</h3>
+                <h3>站点：@s |栈号：@type </h3>
                 <input type="text" id="name" class="hidden" value=@s />
                 @*<h4>@sb1  @sb2  @sb3 @sb4 @sb5 @sb6 @sb7 @sb8</h4>*@
                 
@@ -574,7 +596,7 @@
                         </div><br />
                         @*每个开关*@
                         <div>
-                            <small class="textFont1">1#小泵启停控制</small>
+                            <small class="textFont1">门禁开关状态</small>
                             <div style="float:right">
                                 <div class="switch">
                                     <div class="onoffswitch">
@@ -601,7 +623,7 @@
                         </div><br />
                         @*每个开关*@
                         <div>
-                            <small class="textFont1">2#小泵启停控制</small>
+                            <small class="textFont1">备用开关</small>
                             <div style="float:right">
                                 <div class="switch">
                                     <div class="onoffswitch">

@@ -142,6 +142,8 @@ namespace JuCheap.Core.Web.Mysql.DAL
                     list[k].进口压力恢复值设定 = "";
                     list[k].出口压力目标值设定 = "";
                     list[k].检修运行 = "";
+                    list[k].门禁开关状态 = "";
+                    
                 }
                 else
                 {
@@ -256,6 +258,7 @@ namespace JuCheap.Core.Web.Mysql.DAL
                     list[k].进口压力恢复值设定 = dt1.Rows[0]["进口压力恢复值设定"].ToString();
                     list[k].出口压力目标值设定 = dt1.Rows[0]["出口压力目标值设定"].ToString();
                     list[k].检修运行 = dt1.Rows[0]["检修运行"].ToString();
+                    list[k].门禁开关状态 = dt1.Rows[0]["门禁开关状态"].ToString();
                 }
             }
 

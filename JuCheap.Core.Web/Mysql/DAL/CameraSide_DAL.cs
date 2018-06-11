@@ -97,6 +97,7 @@ namespace JuCheap.Core.Web.Mysql.DAL
                 p.进口压力恢复值设定 = dr["进口压力恢复值设定"].ToString();
                 p.出口压力目标值设定 = dr["出口压力目标值设定"].ToString();
                 p.检修运行 = dr["检修运行"].ToString();
+                p.门禁开关状态 = dr["门禁开关状态"].ToString();
                
 
             }

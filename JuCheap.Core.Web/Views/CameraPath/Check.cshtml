@@ -84,7 +84,7 @@
             alert("hello");
 
         }
-        //需要传入数据表和对应的泵房类型。0-高高，1-高，2-中，3-低
+        //需要传入数据表和对应的泵房类型。4-高高，3-高，2-中，1-低
         function DisplayData(name,num) {
             //就是ajax获取数据然后显示在chart上
             $.ajax({
@@ -442,7 +442,7 @@
                         @if (number[0] != "0")
             {
                 <li class="active">
-                    <a data-toggle="tab" href="#tab-1" aria-expanded="true">高高泵 </a>
+                    <a data-toggle="tab" href="#tab-1" aria-expanded="true">低泵 </a>
                 </li>
 
 }
@@ -450,20 +450,20 @@
             {
 
                 <li class="">
-                    <a data-toggle="tab" href="#tab-2" aria-expanded="true">高泵</a>
+                    <a data-toggle="tab" href="#tab-2" aria-expanded="true">中泵</a>
                 </li>
 }
                         @if (number[2] != "0")
             {
 
                 <li class="">
-                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">中泵</a>
+                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">高泵</a>
                 </li>
 }
                         @if (number[3] != "0")
             {
                 <li class="">
-                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">低泵</a>
+                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">高高泵</a>
                 </li>
 
 }

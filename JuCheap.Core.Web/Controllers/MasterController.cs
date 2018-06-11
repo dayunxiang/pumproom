@@ -22,10 +22,11 @@ namespace JuCheap.Core.Web.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(string s,string x)
+        public IActionResult Index(string s,string x,string y)
         {
             //s就是泵站的站点名称
-            ViewData["Name"] = s;
+            ViewData["Name"] = s+" |类型："+y;
+            ViewData["Type"] = y;
             string Tablename = "pumproom" + x;
             MasterData md = new MasterData_BLL().GetMasterData(Tablename);   
             return View(md);

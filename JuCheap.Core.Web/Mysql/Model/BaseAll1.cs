@@ -136,6 +136,7 @@ namespace JuCheap.Core.Web.Mysql.Model
         public string 进口压力恢复值设定 { get; set; }
         public string 出口压力目标值设定 { get; set; }
         public string 检修运行 { get; set; }
+        public string 门禁开关状态 { get; set; }
 
     }
 }
