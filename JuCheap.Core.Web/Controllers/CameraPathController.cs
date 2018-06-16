@@ -11,6 +11,7 @@ using JuCheap.Core.Web.Filters;
 using JuCheap.Core.Web.Models;
 using JuCheap.Core.Web.Mysql.BLL;
 using JuCheap.Core.Web.Mysql.Model;
+using JuCheap.Core.Web.WcfSevice;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -115,6 +116,32 @@ namespace JuCheap.Core.Web.Controllers
 
             return Json(new { IsSuccess = true, message });
         }
+
+        [HttpPost]
+        public JsonResult GetMen()
+        {
+            
+            string url = "http://172.18.157.36:8084/Service1.svc";
+            IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+            //string wcfdata = proxy.GetData(s);
+            //Console.WriteLine(result);
+           
+            string wcfdata = proxy.ControlLock() + "hello";
+            string message = "ok Men"+wcfdata;
+            return Json(new { IsSuccess = true, message });
+        }
+        [HttpPost]
+        public JsonResult GetPlc(string data)
+        {
+            
+            string url = "http://172.18.157.36:8084/Service1.svc";
+            IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+            string wcfdata = proxy.GetData(Convert.ToInt32(data)) + "hello";
+            string message = "ok Plc"+wcfdata;
+            return Json(new { IsSuccess = true, message });
+        }
+       
+
 
 
     }

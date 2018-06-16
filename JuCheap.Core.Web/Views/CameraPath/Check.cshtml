@@ -25,6 +25,124 @@
     <script type="text/javascript" src="~/js/jquery.js"></script>
     <script type="text/javascript">
         //看来js和cs同台操作。
+
+        function MenON() {
+            //alert("门禁正在打开");
+            $.ajax({
+                url: "/CameraPath/GetMen",
+                type: "POST",
+                dataType: "json",
+                //data: { tablename: $("#name").val() },
+                data: { },
+                success:
+                    function (result) {
+                        if (!result.IsSuccess) {
+                            //alert("ajax ok ");
+                            //alert(result.message);
+
+
+
+                            }
+
+
+
+                         else {
+                            alert("The result is failed!");
+                        }
+                    },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统繁忙,请稍候");
+                },
+                complete: function (XMLHttpRequest, textStatus) {
+
+                },
+                statusCode: {
+                    404: function () {
+                        alert('404，页面不存在');
+                    }
+                }
+            });
+
+        }
+        function PlcON() {
+            //alert("PLC正在打开");
+            $.ajax({
+                url: "/CameraPath/GetPlc",
+                type: "POST",
+                dataType: "json",
+                //data: { tablename: $("#name").val() },
+                data: {data:"10"},
+                success:
+                    function (result) {
+                        if (!result.IsSuccess) {
+                            //alert("ajax ok ");
+                            //alert(result.message);
+
+
+
+                        }
+
+
+
+                        else {
+                            alert("The result is failed!");
+                        }
+                    },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统繁忙,请稍候");
+                },
+                complete: function (XMLHttpRequest, textStatus) {
+
+                },
+                statusCode: {
+                    404: function () {
+                        alert('404，页面不存在');
+                    }
+                }
+            });
+
+
+        }
+        function PlcOFF() {
+            //alert("PLC正在关闭");
+            $.ajax({
+                url: "/CameraPath/GetPlc",
+                type: "POST",
+                dataType: "json",
+                //data: { tablename: $("#name").val() },
+                data: {data:"600"},
+                success:
+                    function (result) {
+                        if (!result.IsSuccess) {
+                            //alert("ajax ok ");
+                            //alert(result.message);
+
+
+
+                        }
+
+
+
+                        else {
+                            alert("The result is failed!");
+                        }
+                    },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统繁忙,请稍候");
+                },
+                complete: function (XMLHttpRequest, textStatus) {
+
+                },
+                statusCode: {
+                    404: function () {
+                        alert('404，页面不存在');
+                    }
+                }
+            });
+        }
       function refresh() {
 
 
@@ -177,8 +295,8 @@
                                     setInterval("refresh()", 60000);
 
 
-       
-       
+
+        
 
         
            
@@ -440,33 +558,36 @@
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
                         @if (number[0] != "0")
-            {
-                <li class="active">
-                    <a data-toggle="tab" href="#tab-1" aria-expanded="true">低泵 </a>
-                </li>
+    {
+                    <li class="active">
+                        <a data-toggle="tab" href="#tab-1" aria-expanded="true">低泵 </a>
+                    </li>
 
 }
                         @if (number[1] != "0")
-            {
+    {
 
-                <li class="">
-                    <a data-toggle="tab" href="#tab-2" aria-expanded="true">中泵</a>
-                </li>
+                    <li class="">
+                        <a data-toggle="tab" href="#tab-2" aria-expanded="true">中泵</a>
+                    </li>
 }
                         @if (number[2] != "0")
-            {
+    {
 
-                <li class="">
-                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">高泵</a>
-                </li>
+                    <li class="">
+                        <a data-toggle="tab" href="#tab-3" aria-expanded="true">高泵</a>
+                    </li>
 }
                         @if (number[3] != "0")
-            {
-                <li class="">
-                    <a data-toggle="tab" href="#tab-3" aria-expanded="true">高高泵</a>
-                </li>
+    {
+                    <li class="">
+                        <a data-toggle="tab" href="#tab-4" aria-expanded="true">高高泵</a>
+                    </li>
 
 }
+                        <li class="active">
+                            <a data-toggle="tab" href="#tab-5" aria-expanded="true">控制界面 </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -489,8 +610,40 @@
                                 <table class="table table-bordered" id="table4"></table>
                             </div>
                         </div>
+                        <div id="tab-5" class="tab-pane">
+                            <div class="panel-body" style="height:520px;overflow:scroll">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            门禁开关
+                                        </th>
+                                        <td onclick="MenON()">
+                                            打开
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            PLC开关
+                                        </th>
+                                        <td onclick="PlcON()">
+                                            打开
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            PLC开关
+                                        </th>
+                                        <td onclick="PlcOFF()">
+                                            关闭
+                                        </td>
+                                    </tr>
+                                </table>
 
-                    </div>
+                            </div>
+                            </div>
+
+
+                        </div>
                 </div>
             </div>
            </div>

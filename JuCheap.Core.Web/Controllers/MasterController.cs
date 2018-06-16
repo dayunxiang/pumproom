@@ -58,14 +58,18 @@ namespace JuCheap.Core.Web.Controllers
 
         //}
 
+            //控制门禁的。
         [HttpPost]
-        public JsonResult GetData(string num)
+        public JsonResult GetData(string num,string name)
         {
 
 
             //string wcfdata = "hello"+num;
             //从这里进行查询
-            string url = "http://192.168.1.101:8051/Service1.svc";
+            //string url = "http://192.168.2.7:8072/Service1.svc";
+            string ip= new MasterData_BLL().GetIpByName(name);
+            string port = "8084";
+            string url= "http://" + ip + ":" + port + "/Service1.svc";
             IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
             //string wcfdata = proxy.GetData(s);
             //Console.WriteLine(result);
@@ -73,6 +77,7 @@ namespace JuCheap.Core.Web.Controllers
             return Json(new { IsSuccess = true, wcfdata });
             //return Json(new { IsSuccess = true, wcfdata });
         }
+        //测试plc开关的。
         /// <summary>
         /// 作为示例自动查找泵站的ip地址。
         /// </summary>
@@ -84,7 +89,7 @@ namespace JuCheap.Core.Web.Controllers
         {
             //string wcfdata = "hello,this is second   "+data;
             //需要将泵站的名称传过来。
-            string port = "8051";
+            string port = "8084";
             string ip = new MasterData_BLL().GetIpByName(name);
             string url = "http://" + ip + ":" + port + "/Service1.svc";
             //string url= "http://192.168.1.101:8051/Service1.svc";
@@ -97,6 +102,18 @@ namespace JuCheap.Core.Web.Controllers
         //    string GetData(int value);
             
         //}
+
+        [HttpPost]
+        public JsonResult Control(string name,string type,string data,string pumpname)
+        {
+            string port = "8072";
+            string ip = new MasterData_BLL().GetIpByName(name);
+            string url = "http://" + ip + ":" + port + "/Service1.svc";
+            //IService1 proxy = WcfInvokeFactory.CreateServiceByUrl<IService1>(url);
+            //string wcfdata = proxy.GetData(Convert.ToInt32(data)) + "hello" + data;
+            string wcfdata = url + "  " + name + "  " + data + "  " + pumpname+"    "+type;
+            return Json(new { IsSuccess = true, wcfdata });
+        }
 
         //public class WcfInvokeFactory
         //{

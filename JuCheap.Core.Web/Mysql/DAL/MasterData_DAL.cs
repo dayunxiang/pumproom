@@ -36,6 +36,11 @@ namespace JuCheap.Core.Web.Mysql.DAL
             md.泵6启停控制 = dt.Rows[0]["6泵启停控制"].ToString();
             md.小泵1启停控制 = dt.Rows[0]["1小泵启停控制"].ToString();
             md.小泵2启停控制 = dt.Rows[0]["2小泵启停控制"].ToString();
+            md.进口压力低值设定 = dt.Rows[0]["进口压力低值设定"].ToString();
+            md.进口压力恢复值设定 = dt.Rows[0]["进口压力恢复值设定"].ToString();
+            md.出口压力目标值设定 = dt.Rows[0]["出口压力目标值设定"].ToString();
+            md.门禁开关状态 = dt.Rows[0]["门禁开关状态"].ToString();
+
             return md;
         }
 
